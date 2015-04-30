@@ -1,12 +1,12 @@
-# Project Name
+# Pickup!
 
-> Pithy project description
+> Helps you find local pickup basketball games at any time
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Kurt Bartholomew
+  - __Scrum Master__: Mark Bennett
+  - __Development Team Members__: Vivek Tumrukota, Steven Shyun
 
 ## Table of Contents
 
