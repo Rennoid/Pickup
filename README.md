@@ -24,11 +24,11 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node 0.12.2
+- Express 4.12.3
+- Angular 1.3.15
+- MySQL 2.6.2
+- Sequelize 2.0.6
 
 ## Development
 
