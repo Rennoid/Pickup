@@ -179,3 +179,6 @@ no problem getting your changes merged in.
 [Git Flow]: http://nvie.com/posts/a-successful-git-branching-model/
 [GitHub Flow]: http://scottchacon.com/2011/08/31/github-flow.html
 [Squash]: http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
+[Angular File Structure]: https://scotch.io/tutorials/angularjs-best-practices-directory-structure
+[Angular Style Guide]: https://github.com/johnpapa/angular-styleguide
+[Node Server File Structure]: https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure

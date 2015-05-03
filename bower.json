@@ -1,0 +1,20 @@
+{
+  "name": "triumphant-mailbox",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Triumphant-Mailbox/triumphant-mailbox",
+  "authors": [
+    "Vivek Tumrukota",
+    "Mark Bennett",
+    "Kurt Bartholomew",
+    "Steven Shyun",
+  ],
+  "main": "client/public/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
