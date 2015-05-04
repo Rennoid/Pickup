@@ -4,27 +4,33 @@
   "description": "Pickup app server dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/server.spec.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vtumrukota/triumphant-mailbox.git"
+    "url": "https://github.com/Triumphant-Mailbox/triumphant-mailbox.git"
   },
-  "author": "Vivek Tumrukota/Mark Bennett/Kurt Bartholomew/Steven Shyun",
-  "license": "ISC",
+  "author": [
+    "Vivek Tumrukota",
+    "Mark Bennett",
+    "Kurt Bartholomew",
+    "Steven Shyun"
+  ],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vtumrukota/triumphant-mailbox/issues"
+    "url": "https://github.com/Triumphant-Mailbox/triumphant-mailbox/issues"
   },
-  "homepage": "https://github.com/vtumrukota/triumphant-mailbox",
+  "homepage": "https://github.com/Triumphant-Mailbox/triumphant-mailbox",
   "dependencies": {
     "bluebird": "^2.9.25",
-    "chai": "^2.3.0",
-    "debug": "^2.1.3",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
-    "mocha": "^2.2.4",
-    "node": "0.0.0",
-    "nodemon": "^1.3.7",
     "sequelize": "^2.1.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.4",
+    "debug": "~2.1.3",
+    "chai": "~2.3.0",
+    "supertest": "~0.15.0"
   }
 }
