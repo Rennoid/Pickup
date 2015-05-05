@@ -19,4 +19,4 @@ app.use(parser.json());
 
 
 // // Serve the client files
-app.use(express.static(__dirname + "/../client/public"));
+app.use(express.static(__dirname + "/../../client/public"));
