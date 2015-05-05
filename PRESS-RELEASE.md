@@ -1,4 +1,4 @@
-# Project Name #
+# Pickup! #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -16,29 +16,39 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+## An App to Organize Public Pickup Games ##
+<!-- > Name the product in a way the reader (i.e. your target customers) will understand. -->
 
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## Find a Free Game Near You, Anytime, Anywhere ##
+  > Stop paying for court time - Pickup! helps you find free games at public locations near you. 
+
+<!-- > Describe who the market for the product is and what benefit they get. One sentence only underneath the title. -->
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+<!-- > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good. -->
+  > Pickup! offers people an easy way to find free pickup basketball games with other ballers at any public court. Whether you're a local who wants to play at the park down the street on the weekends, or you're just looking to find a game while you're in town for a couple of days, Pickup! offers any easy way to connect with other bball fanatics while avoiding the steep costs of court time or league fees. 
+
 
 ## Problem ##
-  > Describe the problem your product solves.
+<!-- > Describe the problem your product solves. -->
+  > It's generally easy to find empty public basketball courts to shoot around on, but what's more difficult is finding public places where you're sure to find others to play with. There's currently no simple, effective way to discover the location and time of good games at public, free courts. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+<!-- > Describe how your product elegantly solves the problem. -->
+  > Pickup! makes it easy for ballers to connect with each other and find pickup games wherever public courts are available. Stop bouncing from park to park hoping to stumble across a good game. Pickup! gives you certainty about where to go to find a good run. 
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+<!-- > A quote from a spokesperson in your company. -->
+ > "We made Pickup! to solve a problem that we've struggled with ourselves for years. Enough people enjoy playing  basketball that it shouldn't be as hard as it is to find public games at no cost. Now we have an awesome way to find good games whether we're by ourselves or with a group."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+<!-- > Describe how easy it is to get started. -->
+  > Check out the site, sign up, and see where people are already playing near you. 
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+<!-- > Provide a quote from a hypothetical customer that describes how they experienced the benefit. -->
+  > Pickup! is by far the best way I've found to discover local, free games with other people like me who just want to play. I'll never pay for court fees again, since now it's so easy to get in a game. 
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+<!-- > Wrap it up and give pointers where the reader should go next. -->
+  > Check out Pickup! for yourself! [add pickup url here]
