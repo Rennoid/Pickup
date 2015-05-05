@@ -23,8 +23,10 @@
   "homepage": "https://github.com/Triumphant-Mailbox/triumphant-mailbox",
   "dependencies": {
     "bluebird": "^2.9.25",
+    "body-parser": "^1.12.3",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
+    "mysql": "^2.6.2",
     "sequelize": "^2.1.0"
   },
   "devDependencies": {
