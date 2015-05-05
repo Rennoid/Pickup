@@ -5,7 +5,10 @@ var parser = require('body-parser');
 var app = express();
 
 //direct all route requests to router.js
-var router = require('./routes.js')
+var router = require('./routes.js');
+
+// // Serve the client files
+app.use(express.static(__dirname + "/../client/public"));
 
 //runs the server on port 3000
 var server = app.listen(3000, function (){
@@ -18,5 +21,4 @@ var server = app.listen(3000, function (){
 app.use(parser.json());
 
 
-// // Serve the client files
-app.use(express.static(__dirname + "/../../client/public"));
+
