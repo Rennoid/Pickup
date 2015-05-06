@@ -4,7 +4,8 @@
   "description": "Pickup app server dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/server.spec.js"
+    "test": "mocha test/server.spec.js",
+    "start": "gulp watch & nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,8 @@
     "chai": "~2.3.0",
     "supertest": "~0.15.0",
     "gulp-livereload": "~3.8.0",
-    "gulp": "~3.8.11"
+    "gulp": "~3.8.11",
+    "gulp-jshint": "~1.10.0",
+    "jshint-stylish": "~1.0.2"
   }
 }
