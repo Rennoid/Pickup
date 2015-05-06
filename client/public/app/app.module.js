@@ -1,7 +1,7 @@
 var app = angular.module('app', [
   'app.users',
   'app.courts',
-  'app.auth'
+  'app.auth',
   'ui.router'
 ]);
 
@@ -34,14 +34,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
     // create a login state with a single view for the login form  
     .state('login', {
       url: '/login',
-      templateUrl: 'auth/loginPartial.hmtl' 
+      templateUrl: 'auth/loginPartial.hmtl', 
       controller: 'AuthController'
     })
 
     // create a signup state with a single view for the signup form  
     .state('signup', {
       url: '/signup',
-      templateUrl: 'auth/signupPartial.hmtl' 
+      templateUrl: 'auth/signupPartial.hmtl', 
       controller: 'AuthController'
     })
 });
