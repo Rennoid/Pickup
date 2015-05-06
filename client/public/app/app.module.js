@@ -1,7 +1,7 @@
 var app = angular.module('app', [
   'app.users',
   'app.courts',
-  'app.auth'
+  'app.auth',
   'ui.router'
 ]);
 
