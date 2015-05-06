@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var livereload = require('gulp-livereload');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 
 /*
 PASTE <script src="//localhost:35729/livereload.js"></script>
@@ -12,13 +14,16 @@ var paths = {
   images: 'client/public/assets/img/*.*',
   styles: 'client/public/assets/css/*.css',
   angComponents: 'client/public/app/**/*.*',
-  html: 'client/public/index.html'
+  html: 'client/public/index.html',
+  server: 'server/**/*.js'
 };
 
 gulp.task('angular', function() {
   return gulp.src([
     paths.angComponents
   ])
+  .pipe(jshint())
+  .pipe(jshint.reporter(stylish))
   .pipe(livereload());
 });
 
@@ -26,6 +31,8 @@ gulp.task('scripts', function() {
   return gulp.src([
     paths.scripts
   ])
+  .pipe(jshint())
+  .pipe(jshint.reporter(stylish))
   .pipe(livereload());
 });
 
@@ -50,6 +57,14 @@ gulp.task('images', function() {
   .pipe(livereload());
 });
 
+gulp.task('server', function() {
+  return gulp.src([
+    paths.server
+  ])
+  .pipe(jshint())
+  .pipe(jshint.reporter(stylish));
+});
+
 gulp.task('watch', function () {
   livereload.listen();
   
@@ -58,8 +73,7 @@ gulp.task('watch', function () {
   gulp.watch(paths.images,['images']);
   gulp.watch(paths.styles,['styles']);
   gulp.watch(paths.angComponents,['angular']);
-
-
+  gulp.watch(paths.server,['server']);
 });
 
 gulp.task('default', ['watch']);
