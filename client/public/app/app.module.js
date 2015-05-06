@@ -9,13 +9,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   // if the path doesn't match any of the urls configured below,
   // otherwise will take care of routing the user to the specified url
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
 
     // create a home state with two partial views
     .state('home', {
-      url: '/home',
+      url: '/',
       views: {
         // userInfo view would display basic info about the current user 
         'userInfo@home': {

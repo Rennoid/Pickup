@@ -1,0 +1,27 @@
+<div id='court-partial'>
+
+<!--   
+  NOTE: this is wishful coding : not totally sure how the court data will be accessed - 
+  so the ng-models and variable names will need to be updated. Mostly meant to be representative of things 
+  we may choose to do on the view. I figure this can be changed as we go. 
+-->
+
+  <!-- display the selected court's name -->
+  <h1 ng-model='court'>{{ name }}</h1>
+
+  <!-- display when the selected court's address  -->
+  <h3 ng-model='court'> {{ address }}</h3>
+
+  <!-- display today's schedule for the selected court -->
+  <!-- added static date for representational purposes  -->
+  <h2>Schedule for Tuesday, May 5th</h2>
+
+  <!-- 
+  Want to render a table showing the number of rsvp'd users within each hour-long block at the selected court. 
+  Not sure yet where this logic will sit, or how it will work, so I left this pretty blank for the time being.  
+  -->
+  <div ng-repeat=''>
+    <tr><td>{{ hourNumber }}</td><td>{{ totalRsvps }}</td></tr>
+  </div>
+
+</div> <!-- end court partial -->

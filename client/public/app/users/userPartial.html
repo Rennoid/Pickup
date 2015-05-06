@@ -1,0 +1,22 @@
+<div id='user-partial'>
+
+<!--   
+  NOTE: this is wishful coding : not totally sure how the current user data will be accessed - 
+  so the ng-models and variable names will need to be updated. Mostly meant to be representative of things 
+  we may choose to do on the view. I figure this can be changed as we go. 
+-->
+
+  <!-- display the current user's username -->
+  <h1>Welcome, <span ng-model='current-user'>{{ username }}</span></h1>
+
+  <!-- display when the user joined Pickup!  -->
+  <p>Ballin since <span ng-model='current-user'> {{ createdAt }}</span></p>
+
+  <!-- display list of user's current rsvp's  -->
+  <h3>My Games,</h3>
+  <!-- repeat for each upcoming rsvp that the user has submitted -->
+  <div ng-repeat='rsvp in data.rsvps'>
+    <tr><td>{{ rsvp.date }}</td><td>{{ rsvp.court }}</td><td>{{ rsvp.starttime }}</td><td>{{ rsvp.endtime }}</td></tr>
+  </div>
+
+</div> <!-- end user partial  -->

@@ -1,0 +1,14 @@
+<div id='login-partial'>
+
+  <h1>Login</h1>
+  <form name="loginForm" ng-submit='login()' novalidate>
+    <input type='text' ng-model='user.username' placeholder='Enter username' ng-minlength="4" required>
+
+    <input type="password" ng-model='user.password' placeholder='Enter password' ng-minlength="4" required>
+
+    <button type='submit' ng-disabled="loginForm.$invalid">Login</button>
+  </form>
+
+  <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
+
+</div> <!-- end login partial --> 
