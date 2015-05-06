@@ -1,0 +1,14 @@
+<div id='signup-partial'>
+
+  <h1>signup</h1>
+  <form name="signupForm" ng-submit='signup()' novalidate>
+    <input type='text' ng-model='user.username' placeholder='Enter username' ng-minlength="4" required>
+
+    <input type="password" ng-model='user.password' placeholder='Enter password' ng-minlength="4" required>
+
+    <button type='submit' ng-disabled="signupForm.$invalid">signup</button>
+  </form>
+
+  <a href="#/login">Already have an account? <strong>Login</strong> ...</a>
+
+</div> <!-- end signup partial  -->
