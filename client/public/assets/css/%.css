@@ -1,8 +1,4 @@
-html, body {
-  height: 100%;
-  margin: 0px;
-  padding: 0px
-}
+
 
 h1 {
   text-align: center;
@@ -45,16 +41,28 @@ p {
   background-color: orange;
 }
 
-b{
-  margin-left: .3em;
-}
-
 .map-container {
   height: 65%;
   width: 45%;
   margin-left: 8em;
   margin-top: 0em;
   float: left;
+}
+
+#map-canvas {
+  position: relative;
+  border: 0.5em solid orange;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+  height: 100%;
+  width: 100%;
+  background-color: gray;
+}
+
+#address {
+  text-align: justify;
+  font-size: 1em;
+  color: white;
 }
 
 .rsvp-container {
@@ -77,23 +85,20 @@ b{
   background-color: white;
   width: 30%;
   height: 45%;
+  text-align: center;
 }
 
-button {
-  text-align: center;
+button{
   font-family: 'Lobster', cursive;
   font-size: 2em;
-  padding-top: 0em;
-  padding-bottom: 0em;
-  padding-right: .3em;
-  padding-left: .3em;
   background: orange;
-  border: 3px solid black;
+  border: 0.2em solid black;
   border-radius: 0.3em;
   color: black;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.1em;
   -webkit-text-stroke-color: white;
-  margin: 0 auto;
+  text-align: center;
+  float:center;
 }
 
 button:hover {
@@ -101,24 +106,7 @@ button:hover {
   background: black;
 }
 
-form {
-  width: 95%;
-  margin: 0 auto;
-}
-
-
-#map-canvas {
-  position: relative;
-  border: 0.5em solid orange;
-  border-top-right-radius: 0.5em;
-  border-top-left-radius: 0.5em;
-  height: 100%;
-  width: 100%;
-  background-color: gray;
-}
-
-#address {
-  text-align: justify;
-  font-size: 1em;
-  color: white;
+.buttonInput{
+  text-align: center;
+  float: center;
 }
