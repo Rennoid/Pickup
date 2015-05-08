@@ -2,6 +2,7 @@ var Sequelize = require('sequelize');
 
 var orm = new Sequelize('pickupDB', 'root','', {
   dialect: 'mysql',
+  logging: false
 });
 
 //creates new row in User Table
@@ -25,7 +26,7 @@ var Court = orm.define('Court', {
 var RSVP = orm.define('RSVP', {
   starttime: Sequelize.DATE,
   endtime: Sequelize.DATE
-})
+});
 
 //establish relationships between tables
 Court.hasMany(RSVP);
