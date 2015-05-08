@@ -17,5 +17,6 @@
     "unused": true,
     "trailing": true,
     "smarttabs": true,
-    "white": true
+    "white": true,
+    "predef": ["angular","google","document","navigator","window"]
 }

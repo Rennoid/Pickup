@@ -13,14 +13,14 @@ var paths = {
   scripts: 'client/public/assets/js/*.js',
   images: 'client/public/assets/img/*.*',
   styles: 'client/public/assets/css/*.css',
-  angComponents: 'client/public/app/**/*.*',
-  html: 'client/public/index.html',
+  angularScripts: 'client/public/app/**/*.js',
+  html: ['client/public/index.html','client/public/app/**/*.html'],
   server: 'server/**/*.js'
 };
 
 gulp.task('angular', function() {
   return gulp.src([
-    paths.angComponents
+    paths.angularScripts
   ])
   .pipe(jshint())
   .pipe(jshint.reporter(stylish))
@@ -44,9 +44,9 @@ gulp.task('styles', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src([
+  return gulp.src(
     paths.html
-  ])
+  )
   .pipe(livereload());
 });
 
