@@ -13,8 +13,8 @@ var paths = {
   scripts: 'client/public/assets/js/*.js',
   images: 'client/public/assets/img/*.*',
   styles: 'client/public/assets/css/*.css',
-  angComponents: 'client/public/app/**/*.*',
-  html: 'client/public/index.html',
+  angularScripts: 'client/public/app/**/*.js',
+  html: ['client/public/index.html','client/public/app/**/*.html'],
   server: 'server/**/*.js'
 };
 
