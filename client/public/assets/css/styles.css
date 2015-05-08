@@ -4,17 +4,17 @@ h1 {
   margin-bottom: .2em;
   margin-top: 0em;
   font-size: 6em;
-  font-family: 'Lobster', cursive;
+  font-family: 'Audiowide', cursive;
   background: orange;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: white;
 }
 
 h2 {
   text-align: center;
-  font-family: 'Lobster', cursive;
+  font-family: 'Audiowide', cursive;
   font-size: 3em;
   color: orange;
   -webkit-text-stroke-width: 2px;
@@ -59,6 +59,7 @@ p {
 }
 
 #address {
+  font-family: 'Audiowide', cursive;
   text-align: justify;
   font-size: 1em;
   color: white;
@@ -83,18 +84,26 @@ p {
   display: inline-block;
   background-color: white;
   width: 30%;
-  height: 45%;
+  height: 46%;
   text-align: center;
 }
 
+form { 
+  width: 95%;
+  margin: 0 auto;
+}
+
 button{
-  font-family: 'Lobster', cursive;
-  font-size: 2em;
+  margin-top: 0.2em;
+  width: 100%;
+  padding: 0px;
+  font-family: 'Audiowide', cursive;
+  font-size: 2.3em;
   background: orange;
   border: 0.2em solid black;
   border-radius: 0.3em;
   color: black;
-  -webkit-text-stroke-width: 0.1em;
+  -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: white;
   text-align: center;
   float:center;
@@ -103,6 +112,16 @@ button{
 button:hover {
   color: orange;
   background: black;
+}
+
+form span {
+  display: block;
+  margin-top: 0.6em;
+  font-size: 0.8em;
+}
+
+form span a {
+  color: orange;
 }
 
 .buttonInput{
