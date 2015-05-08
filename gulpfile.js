@@ -20,7 +20,7 @@ var paths = {
 
 gulp.task('angular', function() {
   return gulp.src([
-    paths.angComponents
+    paths.angularScripts
   ])
   .pipe(jshint())
   .pipe(jshint.reporter(stylish))
