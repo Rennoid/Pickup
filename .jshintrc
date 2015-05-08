@@ -11,11 +11,11 @@
     "latedef": true,
     "newcap": true,
     "noarg": true,
-    "quotmark": "single",
     "regexp": true,
     "undef": true,
     "unused": true,
     "trailing": true,
     "smarttabs": true,
-    "white": true
+    "white": true,
+    "predef": ["angular","google","document","window"]
 }
