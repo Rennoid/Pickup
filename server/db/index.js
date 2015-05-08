@@ -10,11 +10,6 @@ var User = orm.define('User', {
   password: Sequelize.STRING,
   email: Sequelize.STRING
 });
-var Sequelize = require('sequelize');
-
-var orm = new Sequelize('pickupDB', 'root','' , {
-  dialect: 'mysql',
-});
 
 //creates new row in Court Table
 var Court = orm.define('Court', {
