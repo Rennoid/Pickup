@@ -13,7 +13,7 @@ module.exports = {
     db.RSVP.create({
       starttime: req.body.starttime,
       endtime: req.body.endtime,
-      court: courtID
+      court_id: courtID
     }).complete(function(err, results){
       res.sendStatus(201);
     })
