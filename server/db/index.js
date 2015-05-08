@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-var orm = new Sequelize('pickupDB', 'root','' , {
+var orm = new Sequelize('pickupDB', 'root','', {
   dialect: 'mysql',
 });
 
@@ -29,8 +29,8 @@ var RSVP = orm.define('RSVP', {
 
 //establish relationships between tables
 Court.hasMany(RSVP);
-User.hasMany(RSVP);
 RSVP.belongsTo(Court);
+User.hasMany(RSVP);
 RSVP.belongsTo(User);
 
 
