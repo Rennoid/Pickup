@@ -44,9 +44,9 @@ gulp.task('styles', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src([
+  return gulp.src(
     paths.html
-  ])
+  )
   .pipe(livereload());
 });
 
