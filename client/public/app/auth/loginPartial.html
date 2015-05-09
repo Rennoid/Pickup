@@ -1,14 +1,18 @@
-<div id='login-partial'>
+<div class='login-partial auth-container'>
 
-  <h1>Login</h1>
-  <form name="loginForm" ng-submit='login()' novalidate>
-    <input type='text' ng-model='user.username' placeholder='Enter username' ng-minlength="4" required>
+  <h2>Login</h2>
+  <div class='userInput'>
+    <form name="loginForm" ng-submit='login()' novalidate>
+      <input type='text' placeholder='Username' ng-minlength="4"  required>
 
-    <input type="password" ng-model='user.password' placeholder='Enter password' ng-minlength="4" required>
+      <input type="password" placeholder='Password' ng-minlength="4" required>
 
-    <button type='submit' ng-disabled="loginForm.$invalid">Login</button>
-  </form>
+      <center>
+        <button class='buttonInput' type='submit' ng-disabled="loginForm.$invalid">Login</button><br>
+        <a ui-sref="signup">Don't have an account? <strong>Signup</strong> ...</a>
+      </center>
+    </form>
 
-  <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
+  </div> <!-- end userInput -->
 
 </div> <!-- end login partial --> 

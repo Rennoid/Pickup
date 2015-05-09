@@ -7,15 +7,15 @@
 -->
 
   <!-- display the current user's username -->
-  <h1>Welcome, <span ng-model='current-user'>{{ username }}</span></h1>
+  <h3>Welcome, <span ng-model='currentUser'>{{ currentUser.username }}</span></h3>
 
   <!-- display when the user joined Pickup!  -->
-  <p>Ballin since <span ng-model='current-user'> {{ createdAt }}</span></p>
+  <h6>Ballin since <span ng-model='currentUser'> {{ currentUser.createdAt }}</span></h6>
 
   <!-- display list of user's current rsvp's  -->
   <h3>My Games,</h3>
   <!-- repeat for each upcoming rsvp that the user has submitted -->
-  <div ng-repeat='rsvp in data.rsvps'>
+  <div ng-repeat='rsvp in currentUser.rsvps'>
     <tr><td>{{ rsvp.date }}</td><td>{{ rsvp.court }}</td><td>{{ rsvp.starttime }}</td><td>{{ rsvp.endtime }}</td></tr>
   </div>
 
