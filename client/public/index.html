@@ -53,15 +53,27 @@
     </ul>
   </section>
   </nav> -->
+  
   <div class="map-container">
     <div id="map-canvas"></div>
     <script type="text/javascript" src="assets/js/geoMapping.js"></script>
     <p><b>Address</b>: <span id="address"></span></p>
     <span id="error"></span>
-    <div ui-view></div>
   </div>
 
-  <div class="login-container">
+  <div ui-view></div>
+  <div ui-view='userInfo'></div>
+  <div ui-view='courtInfo'></div>
+
+<!--  
+/////////////////////////////////////////////  
+
+LOGIN FORM
+
+/////////////////////////////////////////////
+-->
+
+<!--   <div class="login-container">
     <h2>Login</h2>
     <div class="userInput">
       <form>
@@ -83,9 +95,17 @@
         </center>
       </form>
     </div>
-  </div>
+  </div> -->
 
- <!--  <div class="rsvp-container">
+<!--  
+/////////////////////////////////////////////
+
+RSVP TABLE 
+
+/////////////////////////////////////////////
+-->
+
+<!--   <div class="rsvp-container">
     <h2>RSVP</h2>
     <table style="width:100%">
     <tr>

@@ -27,6 +27,7 @@ angular.module('app.services', [])
   };
 
   var isAuth = function () {
+    console.log("AUTH CHECK: ", !!$window.localStorage.getItem('com.app'));
     return !!$window.localStorage.getItem('com.app');
   };
 

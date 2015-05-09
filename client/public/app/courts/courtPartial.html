@@ -7,21 +7,21 @@
 -->
 
   <!-- display the selected court's name -->
-  <h1 ng-model='court'>{{ name }}</h1>
+  <h3 ng-model='data'>{{ data.name }}</h3>
 
   <!-- display when the selected court's address  -->
-  <h3 ng-model='court'> {{ address }}</h3>
+  <h4 ng-model='data'> {{ data.address }}</h4>
 
   <!-- display today's schedule for the selected court -->
   <!-- added static date for representational purposes  -->
-  <h2>Schedule for Tuesday, May 5th</h2>
+  <h4>Schedule for Tuesday, May 5th</h4>
 
   <!-- 
   Want to render a table showing the number of rsvp'd users within each hour-long block at the selected court. 
   Not sure yet where this logic will sit, or how it will work, so I left this pretty blank for the time being.  
   -->
-  <div ng-repeat=''>
-    <tr><td>{{ hourNumber }}</td><td>{{ totalRsvps }}</td></tr>
+  <div ng-repeat='rsvp in data.schedule'>
+    <tr><td>{{ rsvp.hour }}</td><td>{{ rsvp.rsvps }}</td></tr>
   </div>
 
 </div> <!-- end court partial -->
