@@ -10,19 +10,19 @@ angular.module('app.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      // return resp.data.token;
+      return resp.data;
     });
   };
 
   var signup = function (user) {
-    console.log("USER: ", user);
     return $http({
       method: 'POST',
       url: '/api/users/signup',
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      return resp.data;
     });
   };
 
@@ -38,9 +38,28 @@ angular.module('app.services', [])
 
 
   return {
-    signin: login,
+    login: login,
     signup: signup,
     isAuth: isAuth,
     signout: signout
+  };
+})
+
+.factory('Court', function ($http, $location, $window){
+  var getCourtInfo = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/rsvp/findCourt'
+    })
+    .success(function(data, status, headers, config) {
+      return data;
+    })
+    .error(function(data, status, headers, config) {
+      return data;
+    });
+  };
+
+  return {
+    getCourtInfo: getCourtInfo
   };
 });

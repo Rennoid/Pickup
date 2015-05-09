@@ -1,7 +1,7 @@
 var db = require('../db');
 
 module.exports = {
-  signin: function (req, res, next) {
+  login: function (req, res, next) {
     var username = req.body.username,
         password = req.body.password;
 
@@ -14,10 +14,10 @@ module.exports = {
               res.json("valid")
             } else {
               next(new Error ('invalid password'));
-            }
+            } 
         }
       })
-      .fail(function (error) {
+      .catch(function (error) {
         next(new Error('unable to look up User'));
       });
   },

@@ -1,8 +1,8 @@
-var rsvpRoutes = require('./rsvpRoutes.js');
+var rsvpController = require('./rsvpController.js');
 
 module.exports = function (app) {
 
-  app.post('/addCourt', rsvpRoutes.addCourt);
-  app.get('/', rsvpRoutes.allRsvp);
-
+  app.post('/addCourt', rsvpController.addCourt);
+  app.get('/findCourt', rsvpController.findCourt);
+  app.get('/', rsvpController.allRsvp);
 };

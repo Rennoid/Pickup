@@ -1,12 +1,10 @@
 angular.module('app.courts', [])
 
 // create CourtController to send data from database to the view 
-.controller('CourtController', function ($scope) {
-  // to be completed... 
+.controller('CourtController', function ($scope, Court) {
 
+  // this is dummy data, just to show something on the page. 
   $scope.data = {
-    // this is dummy data, just to show something on the page. 
-    // still need to work out how data will be received from the db 
     name: 'Oakland Park Court',
     address: '499 Market Street, San Francisco, CA 94111',
     schedule: {
@@ -19,9 +17,17 @@ angular.module('app.courts', [])
         rsvps: 7
       }
     }
-  }
-  // THOUGHTS: click event that determines which court data we will want to display happens on the main view -
-  // i.e. in index.html. So the click event will need to trigger some type of controller action, which will then talk
-  // to the server side so that the data for that specific court can be fetched from the database and then ultimately sent 
-  // here to be rendered by the view... 
+  };
+
+  // function to fetch data for a single court from the database. 
+  // this should be triggered by a click method on the google map.  
+  $scope.getCourtInfo = function() {
+    Court.getCourtInfo()
+      .then(function(court){
+        $scope.data.court = court.data;
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+  };
 });
