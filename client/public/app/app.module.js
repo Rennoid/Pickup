@@ -44,7 +44,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: '/signup',
       templateUrl: 'app/auth/signupPartial.html', 
       controller: 'AuthController'
-    })
+    });
 
     // Add $httpInterceptor into the array of interceptors. 
     // like middleware for ajax calls 
@@ -81,5 +81,3 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     }
   });
 });
-
-;

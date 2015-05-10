@@ -26,5 +26,5 @@ angular.module('app.users', [])
         date: '12/2/2015'
       }
     }
-  }
+  };
 });

@@ -11,7 +11,7 @@ module.exports = {
           next(new Error ('invalid user'));
         } else{
             if (password === user.password) {
-              res.json("valid")
+              res.json("valid");
             } else {
               next(new Error ('invalid password'));
             } 
