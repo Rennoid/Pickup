@@ -7,6 +7,8 @@
 
       <input type="password" ng-model='user.password' placeholder='Password' ng-minlength="4" required>
 
+      <input type="email" ng-model='user.email' placeholder='Email' ng-minlength="4" required>
+
       <center>
         <button class='buttonInput' type='submit' ng-disabled="signupForm.$invalid">Signup</button><br>
         <a ui-sref="login">Already have an account? <strong>Login</strong> ...</a>

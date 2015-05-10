@@ -19,7 +19,7 @@ module.exports = function (app, express) {
   // Serve the client files
   app.use(express.static("client/public"));
 
-  app.use('/api/user', userRouter);
+  app.use('/api/users', userRouter);
   // app.use('/api/rsvp', rsvpRouter);
   // app.use('/api/court', courtRouter);
 
