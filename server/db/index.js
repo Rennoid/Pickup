@@ -1,8 +1,7 @@
 var Sequelize = require('sequelize');
 
 var orm = new Sequelize('pickupDB', 'root','', {
-  dialect: 'mysql',
-  logging: false
+  dialect: 'mysql'
 });
 
 //creates new row in User Table
@@ -16,8 +15,8 @@ var User = orm.define('User', {
 var Court = orm.define('Court', {
   name: Sequelize.STRING,
   address: Sequelize.STRING,
-  logitude: Sequelize.DECIMAL,
-  lattitude: Sequelize.DECIMAL,
+  longitude: Sequelize.DECIMAL,
+  latitude: Sequelize.DECIMAL,
   rating: Sequelize.INTEGER
 });
 
@@ -36,11 +35,36 @@ RSVP.belongsTo(User);
 
 
 //Creates the tables
-User.sync();
-Court.sync();
-RSVP.sync();
+
+orm.sync({force:true}).then(function(){
+  User.bulkCreate([
+    { username: 'kurt',password:'kurt', email:'kurt@kurt.com' },
+    { username: 'vivek',password:'vivek', email:'vivek@vivek.com' },
+    { username: 'mark',password:'mark', email:'mark@mark.com' }
+  ]);
+
+  Court.bulkCreate([
+    { name: 'Venice Beach', address:'1800 Ocean Front Walk Venice, CA 90291', longitude:-118.47277, latitude: 33.98561, rating: 5 },
+    { name: 'Mosswood Park', address:'397 W MacArthur Blvd Oakland, CA 94611', longitude:-122.26121, latitude: 37.82464, rating: 5 },
+    { name: 'Potrero Hill Recreation Center', address:'801 Arkansas St. San Francisco, CA 94107', longitude:-122.39756, latitude: 37.75696, rating: 4 },
+  ]);
+
+  RSVP.bulkCreate([
+    { starttime: new Date('December 17, 2015 13:00:00'), endtime: new Date('December 17, 2015 14:00:00'), CourtId: 1, UserId:1 },
+    { starttime: new Date('December 20, 2015 13:00:00'), endtime: new Date('December 20, 2015 14:00:00'), CourtId: 1, UserId:1 },
+    { starttime: new Date('December 18, 2015 11:00:00'), endtime: new Date('December 18, 2015 12:00:00'), CourtId: 2, UserId:2 },
+    { starttime: new Date('December 19, 2015 15:00:00'), endtime: new Date('December 19, 2015 16:00:00'), CourtId: 3, UserId:3 }
+  ]);
+});
+
+//orm.sync();
+
+// User.sync();
+// Court.sync();
+// RSVP.sync();
 
 //exports tables so other files can reference
 exports.User = User;
 exports.Court = Court;
 exports.RSVP = RSVP;
+

@@ -6,8 +6,13 @@ angular.module('app.auth', [])
 
   $scope.login = function () {
     Auth.login($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.app', token);
+      .then(function (credentials) {
+        var user = {
+          userId: credentials.id,
+          username: credentials.username,
+          createdAt: credentials.createdAt
+        };
+        $window.localStorage.setItem('com.app', JSON.stringify(user));
         $location.path('/');
       })
       .catch(function (error) {
@@ -17,8 +22,13 @@ angular.module('app.auth', [])
 
   $scope.signup = function () {
     Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.app', token);
+      .then(function (credentials) {
+        var user = {
+          userId: credentials.id,
+          username: credentials.username,
+          createdAt: credentials.createdAt
+        };
+        $window.localStorage.setItem('com.app', JSON.stringify(user));
         $location.path('/');
       })
       .catch(function (error) {

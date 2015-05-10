@@ -19,9 +19,21 @@ module.exports = {
     });
   },
 
+  findRsvp: function(req, res, next){
+    var userid = req.params.userId;
+
+    db.RSVP.findAll({where:{UserId: userid}, include:[db.Court]})
+      .then(function (results){
+        res.json(results);
+      })
+      .catch(function(error){
+        next(new Error('Cant find RSVPs for this player: ', error));
+      });
+  },
+
   allRsvp: function(req, res, next){
     db.RSVP.findAll({court: courtID})
-    .then(function(err, results){
+    .then(function(results){
       if(!results){
         next(new Error('courtID not found'));
       } else{
