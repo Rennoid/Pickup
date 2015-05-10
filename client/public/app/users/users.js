@@ -10,7 +10,6 @@ angular.module('app.users', [])
   };
 
   Profile.getRSVP(user.userId).then(function(userRsvps){
-    console.log(userRsvps);
     $scope.currentUser.rsvps = userRsvps;
   });
 });

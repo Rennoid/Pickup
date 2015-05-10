@@ -1,4 +1,5 @@
 var app = angular.module('app', [
+  'app.map',
   'app.users',
   'app.courts',
   'app.auth',

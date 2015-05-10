@@ -21,10 +21,10 @@ module.exports = function (app, express) {
 
   app.use('/api/users', userRouter);
   app.use('/api/rsvp', rsvpRouter);
-  // app.use('/api/court', courtRouter);
+  app.use('/api/court', courtRouter);
 
   require('../users/userRoutes.js')(userRouter);
   require('../rsvp/rsvpRoutes.js')(rsvpRouter);
-  // require('../courts/courtRoutes.js')(courtRouter);
+  require('../courts/courtRoutes.js')(courtRouter);
 
 };

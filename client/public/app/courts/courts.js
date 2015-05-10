@@ -7,16 +7,16 @@ angular.module('app.courts', [])
   $scope.data = {
     name: 'Oakland Park Court',
     address: '499 Market Street, San Francisco, CA 94111',
-    schedule: {
-      '1': {
+    schedule: [
+      {
         hour: '5:00pm',
         rsvps: 10
       },
-      '2': {
+      {
         hour: '6:00pm',
         rsvps: 7
       }
-    }
+    ]
   };
 
   // function to fetch data for a single court from the database. 

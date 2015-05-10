@@ -1,16 +1,15 @@
-<div id='court-partial'>
+<div id='court-partial' class="rsvp-container">
 
 <!--   
   NOTE: this is wishful coding : not totally sure how the court data will be accessed - 
   so the ng-models and variable names will need to be updated. Mostly meant to be representative of things 
   we may choose to do on the view. I figure this can be changed as we go. 
 -->
-
   <!-- display the selected court's name -->
-  <h3 ng-model='data'>{{ data.name }}</h3>
+  <h4 ng-model='data'> Schedule for {{ data.name }}</h3>
 
   <!-- display when the selected court's address  -->
-  <h4 ng-model='data'> {{ data.address }}</h4>
+  <p ng-model='data'> {{ data.address }}</p>
 
   <!-- display today's schedule for the selected court -->
   <!-- added static date for representational purposes  -->

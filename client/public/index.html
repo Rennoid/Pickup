@@ -20,6 +20,7 @@
   <script type="text/javascript" src="assets/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 
   <!-- angular modules  -->
+  <script type="text/javascript" src="app/map/map.js"></script>
   <script type="text/javascript" src="app/auth/auth.js"></script>
   <script type="text/javascript" src="app/courts/courts.js"></script>
   <script type="text/javascript" src="app/users/users.js"></script>
@@ -55,9 +56,8 @@
   </section>
   </nav> -->
   
-  <div class="map-container">
+  <div class="map-container" ng-controller="mapController" ng-init="geolocateUser()">
     <div id="map-canvas"></div>
-    <script type="text/javascript" src="assets/js/geoMapping.js"></script>
     <p><b>Address</b>: <span id="address"></span></p>
     <span id="error"></span>
   </div>

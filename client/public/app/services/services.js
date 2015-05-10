@@ -47,22 +47,32 @@ angular.module('app.services', [])
   };
 })
 
-.factory('Court', function ($http, $location, $window){
-  var getCourtInfo = function() {
+.factory('Court', function ($http){
+  var getCourtInfo = function(court) {
     return $http({
       method: 'GET',
-      url: '/api/rsvp/findCourt'
+      url: '/api/court/findCourt',
+      data: court.address
     })
-    .success(function(data, status, headers, config) {
-      return data;
+    .then(function(response){
+      return response.data;
+    });
+  };
+
+  var getCourtSchedule = function(court) {
+    return $http({
+      method: 'GET',
+      url: '/api/'+court.id+'/rsvp',
+      data: court
     })
-    .error(function(data, status, headers, config) {
-      return data;
+    .then(function (response){
+      return response.data;
     });
   };
 
   return {
-    getCourtInfo: getCourtInfo
+    getCourtInfo: getCourtInfo,
+    getCourtSchedule: getCourtSchedule
   };
 })
 

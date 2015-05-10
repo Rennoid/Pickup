@@ -23,8 +23,8 @@ h2 {
 }
 
 body {
-  background-color: black;
-  background-image: url('http://www.sportsintofaith.com/isfs/wp-content/uploads/2014/01/Basketball-Court1.jpg');
+  background-color: white;
+  /*background-image: url('http://www.sportsintofaith.com/isfs/wp-content/uploads/2014/01/Basketball-Court1.jpg');*/
   background-size: cover;
 }
 
@@ -74,6 +74,10 @@ p {
   background-color: gray;
   width: 30%;
   height: 75%;
+}
+
+.rsvp-container p {
+  background-color: none;
 }
 
 .auth-container{
