@@ -1,31 +1,45 @@
 var db = require('../db');
+var sequelize = require('sequelize');
 
 module.exports = {
-
+  
+  /**
+   * Get all the rsvp's for the court with the id
+   * that is passed in. This is called in the second part
+   * of the Court Service's getCourtSchedule
+   */
   getCourtRSVP: function (req, res ,next) {
     var courtId = req.params.courtId;
 
-    db.Court.find({where:{id:courtId},include:[db.RSVP]})
+    db.RSVP.findAll({where:{CourtId:courtId},
+      /* Still needs to be adjusted to properly create a count column */
+      attributes: ['starttime','endtime',sequelize.fn('count', sequelize.col('UserId'))],
+      group:['starttime']})
       .then(function(results){
         res.json(results);
       })
       .catch(function(error){
-        next(new Error('Cant find RSVPs for this player: ', error));
+        next(new Error('Cant find RSVPs for court: ', error));
       });
   },
 
+  /**
+   * Find the court using the Google Places placeId
+   * provided by the map controller. If it doesn't find
+   * anything, return the data about the Google Place that was
+   * passed in, or return our entry from the database.
+   */
   findCourt: function(req, res, next){
-    var address = req.body.data.address;
-
-    db.Court.findOne({address: address})
+    var placeId = req.query.placeId;
+    db.Court.find({where:{placeId: placeId}})
       .then(function(results){
-        // if(!court) {
-        //   addCourt(courtname);
-        // }
-        // var courtID = db.Court.court.id;
-        //   return courtID;
-        // });
-        res.json(results);
+        if(!results) {
+          // return data from Google Places Library
+          res.json(req.query);
+        } else {
+          // return data from our database about the court
+          res.json(results);
+        }
       })
       .catch(function(error){
         next(new Error('Couldnt find that court: ', error));

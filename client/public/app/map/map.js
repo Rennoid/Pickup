@@ -4,6 +4,8 @@ angular.module('app.map', [])
   // object representing the entire map
   $scope.map = {};
 
+  $scope.service = {};
+
   // object used to display information on a marker when clicked
   $scope.infowindow = {};
 
@@ -48,7 +50,7 @@ angular.module('app.map', [])
     });
 
     $scope.infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService($scope.map);
+    $scope.service = new google.maps.places.PlacesService($scope.map);
 
     var request = {
       location: userLatLng,
@@ -56,7 +58,7 @@ angular.module('app.map', [])
       types: ['park']
     };
 
-    service.nearbySearch(request, $scope.populateMarkers);
+    $scope.service.nearbySearch(request, $scope.populateMarkers);
   };
 
   /**
@@ -93,6 +95,16 @@ angular.module('app.map', [])
     });
 
     google.maps.event.addListener(marker, 'click', function() {
+      $scope.service.getDetails({ placeId: place.place_id }, function(thisplace,status){
+        if(status === google.maps.places.PlacesServiceStatus.OK){
+          //console.log(thisplace);
+          Court.getCourtSchedule({
+            name: thisplace.name,
+            address: thisplace.formatted_address,
+            placeId: thisplace.place_id
+          });
+        }
+      });
       $scope.infowindow.setContent(place.name);
       $scope.infowindow.open($scope.map, this);
     });
