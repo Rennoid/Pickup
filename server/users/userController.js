@@ -5,20 +5,20 @@ module.exports = {
     var username = req.body.username,
         password = req.body.password;
 
-    db.User.findOne({username: username})
-      .then(function (err, user) {
+    db.User.find({where:{username: username}})
+      .then(function (user) {
         if (!user) {
           next(new Error ('invalid user'));
         } else{
             if (password === user.password) {
-              res.json("valid");
+              res.json(user);
             } else {
               next(new Error ('invalid password'));
             } 
         }
       })
       .catch(function (error) {
-        next(new Error('unable to look up User'));
+        next(new Error('unable to look up User: '+ error));
       });
   },
 
@@ -27,9 +27,13 @@ module.exports = {
       username: req.body.username,
       password: req.body.password,
       email: req.body.email
-    }).then(function(err, results){
-      res.sendStatus(201);
-    });
+    })
+      .then(function (results){
+        console.log(results);
+        res.json(results);
+      })
+      .catch(function (error){
+        next(new Error('Error occurred while creating user: '+ error));
+      });
   }
-
 };

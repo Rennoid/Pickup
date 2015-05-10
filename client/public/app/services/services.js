@@ -2,6 +2,8 @@ angular.module('app.services', [])
 
 .factory('Auth', function ($http, $location, $window) {
 
+  //$scope.user = {};
+
   var login = function (user) {
     console.log('USER:' , user);
     return $http({
@@ -62,4 +64,16 @@ angular.module('app.services', [])
   return {
     getCourtInfo: getCourtInfo
   };
-});
+})
+
+.service('Profile', ['$http', function ($http){
+  this.getRSVP = function(userId){
+    return $http({
+      method: 'GET',
+      url: '/api/rsvp/'+userId,
+    })
+    .then(function (response){
+      return response.data; 
+    });
+  };
+}]);
