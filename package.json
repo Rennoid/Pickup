@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/server.spec.js",
-    "start": "gulp watch & nodemon server/server.js"
+    "start": "gulp watch & nodemon server/server.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,8 @@
     "express": "^4.12.3",
     "morgan": "^1.5.2",
     "mysql": "^2.6.2",
-    "sequelize": "^2.1.0"
+    "sequelize": "^2.1.0",
+    "bower": "~1.4.1"
   },
   "devDependencies": {
     "mocha": "~2.2.4",
