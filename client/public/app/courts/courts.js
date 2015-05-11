@@ -5,6 +5,10 @@ angular.module('app.courts', [])
   $scope.court = Court;
   $scope.state = $state;
   $scope.rsvp = {};
+
+  $scope.reloadState = function() {
+    $scope.state.reload();
+  }
   //allows users to add rsvp.  prepares rsvp to be stored in table
   $scope.addRsvp = function () {
     var date = $scope.rsvp.date;
@@ -23,10 +27,6 @@ angular.module('app.courts', [])
       'placeId': placeId,
       'address': address
     };
-
-    $scope.reloadState = function() {
-      $scope.state.reload();
-    }
 
     Court.postRsvp(rsvp)
       .then(function (data){
