@@ -1,14 +1,12 @@
 <div ng-if='court.currentCourtData.name !== ""' id='court-partial' class="rsvp-container">
 
-  <!-- display the selected court's name -->
-  <h4 ng-model='court'> Schedule for {{ court.currentCourtData.name }}</h4>
-
-  <!-- display when the selected court's address  -->
-  <h5 ng-model='court'> {{ court.currentCourtData.address }}</h5>
-
+  <div class="courtName">
+    <!-- display the selected court's name -->
+    <h4 class="courtName" ng-model='court'>{{ court.currentCourtData.name }}</h4>
+    <!-- display when the selected court's address  -->
+    <p ng-model='court'> {{ court.currentCourtData.address }}</p>
+  </div>
   <!-- display today's schedule for the selected court -->
-  <h4>Date: {{ court.currentCourtData.date | date:'longDate'}}</h4>
-
 
   <div ng-repeat='rsvp in court.currentCourtData.schedule'>
     <tr><td>TIME SLOT: {{ rsvp.starttime | date:'shortTime' }}</td><td> RSVP's: {{ rsvp.count }} </td></tr>
@@ -17,16 +15,13 @@
 
   <!-- add ability to rsvp for a time-slot -->
   <div class='rsvp-submit userInput'>
-    <h4>RSVP to play at this court!</h4>
-    <form name='rsvpForm' ng-submit='addRsvp()' novalidate>
+    <h4>Schedule A Time To Play!</h4>
+    <form class = 'rsvpForm' name='rsvpForm' ng-submit='addRsvp()' novalidate>
 
-      Date: <input type='date' ng-model='rsvp.date' placeholder='Date' required>
-      <input type='time' ng-model='rsvp.starttime' placeholder='Start-time' required>
-      <input type='time' ng-model='rsvp.endtime' placeholder='End-time' required><br>
-
-      <center>
-        <button class='buttonInput' type='submit' ng-disabled="rsvpForm.$invalid">Submit RSVP!</button>
-      </center>
+      <input type='date' ng-model='rsvp.date' placeholder='Date'  required/>
+      <input type='time' ng-model='rsvp.starttime' placeholder='Start-time' required/>
+      <input type='time' ng-model='rsvp.endtime' placeholder='End-time' required/>
+      <button class='buttonInput' type='submit' ng-disabled="rsvpForm.$invalid">Submit RSVP!</button>
     </form>
   </div> <!-- end rsvp-submit -->
 

@@ -32,12 +32,40 @@ h3 {
   margin-top: 0em;
 }
 
+.courtName {
+  background-color: red;
+}
+
+h4 {
+  color: white;
+  font-family: 'Audiowide', cursive;  
+  font-size: 2em;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  margin-top: 1px;
+}
+
+h4.courtName {
+  color: white;
+  font-family: 'Audiowide', cursive;  
+  font-size: 1.7em;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  margin: 0px;
+}
+
+
 h6 {
   margin-top: 0.3em;
   font-family: 'Playball', cursive;
   font-size: 1.1em;
   padding-bottom: 0em;
-  color: white;
+  color: orange;
+  border: 1px solid white;
+  background-color: white;
+  padding-left: 0em;
+  padding-right: 0em;
+  width:28%;
 }
 
 body {
@@ -46,24 +74,13 @@ body {
   background-size: cover;
 }
 
-p {
-  margin-top: 0em;
-  border: 0.4em solid orange;
-  border-bottom-right-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
-  width: 100%;
-  height: 10%;
-  color: black;
-  font-size: 1.2em;
-  background-color: orange;
-}
-
 .map-container {
   height: 65%;
   width: 45%;
-  margin-left: 8em;
+  margin-left: 5em;
   margin-top: 0em;
   float: left;
+
 }
 
 #map-canvas {
@@ -76,9 +93,29 @@ p {
   background-color: gray;
 }
 
+p.address, b {
+  margin-top: 0em;
+  border: 0.4em solid orange;
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  width: 100%;
+  color: black;
+  font-size: 1.2em;
+  background-color: orange;
+}
+
+
+.courtName p {
+  font-size: 0.8em;
+  color: white;
+  font-family: 'Biryani', sans-serif;
+  background-color: red;
+}
+
 #address {
-  font-family: 'Audiowide', cursive;
+  font-family: 'Biryani', sans-serif;  
   text-align: justify;
+  display: inline-block;
   font-size: 1em;
   color: white;
 
@@ -88,12 +125,14 @@ p {
   float: right;
   border: 0.5em solid orange;
   border-radius: .5em;
-  margin-right: 8em;
+  margin-right: 5em;
   display: inline-block;
   background-color: gray;
-  width: 30%;
+  width: 45%;
   height: 75%;
-
+  background: url('../img/hardwood.jpg');
+  background-size: cover;
+  text-align: center;
 }
 
 .rsvp-container p {
@@ -104,18 +143,26 @@ p {
   float: right;
   border: 0.5em solid orange;
   border-radius: 0.5em;
-  margin-right: 8em;
+  margin-right: 5em;
   display: inline-block;
   background-color: white;
-  width: 30%;
+  width: 40%;
   text-align: center;
   background: url('../img/hardwood.jpg');
-
+  background-size: cover;
 }
 
 form { 
   width: 95%;
   margin: 0 auto;
+}
+
+.rsvpForm {
+  width: 60%;
+  margin-bottom: 0px;
+}
+button.buttonInput {
+  margin-bottom: 0.2em;
 }
 
 .userInput button, .logout button{
@@ -146,12 +193,12 @@ form {
 }
 
 .userInput a {
-  padding-top: 0.3em;
-  color: black;
+  padding-top: 0em;
+  color: white;
 }
 
 .userInput strong {
-  color: orange;
+  color: blue;
 }
 
 .logout a {
