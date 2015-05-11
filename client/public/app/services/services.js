@@ -3,7 +3,6 @@ angular.module('app.services', [])
 .factory('Auth', function ($http, $location, $window) {
 
   var login = function (user) {
-    console.log('USER:' , user);
     return $http({
       method: 'POST',
       url: '/api/users/login',
@@ -95,6 +94,18 @@ angular.module('app.services', [])
     })
     .catch(function(error){
       return new Error('An error occurred while looking up the schedule: ',error);
+    });
+  };
+
+  this.postRsvp = function (rsvp) {
+    return $http({
+      method: 'POST',
+      url: '/api/rsvp/addRsvp',
+      data: rsvp
+    })
+    .then(function (resp) {
+      // return resp.data.token;
+      return resp.data;
     });
   };
 })

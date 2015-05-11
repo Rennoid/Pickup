@@ -54,7 +54,7 @@ angular.module('app.map', [])
 
     var request = {
       location: userLatLng,
-      radius: 500,
+      radius: 1000,
       types: ['park']
     };
 
