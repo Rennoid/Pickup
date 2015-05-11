@@ -1,48 +1,34 @@
 var db = require('../db');
 
-//finds court ID in the courts table
-var findCourt = function(req, res, next){
+var addRsvp = function (req, res, next){
   var starttime = req.body.starttime,
     endtime = req.body.endtime,
     courtName = req.body.courtName,
+    placeId = req.body.placeId,
+    address = req.body.address,
     userId = req.body.userId;
-  db.Court.findOne({courtname: courtName})
-    .then(function(err, court){
-      if(!court) {
-        addCourt(req, res, next);
-      }
-      // line 20 is executing whether or not a
-      // court already exists in the database,
-      // so it throws an error when the court
-      // isn't in the database and needs to be added;
-      // not sure how to get access to the courtId
-      // from the `addCourt` function in order to
-      // return the id in all cases.
-      var courtID = db.Court.court.id;
-      return courtID;
+
+  db.Court.findOrCreate( { 
+    where: { placeId: placeId }, 
+    defaults: {
+      name: courtName,
+      address: address
+    }
+  })
+    .spread(function (instance, created) {
+      db.RSVP.create({
+        starttime: starttime,
+        endtime: endtime,
+        CourtId: instance.dataValues.id,
+        UserId: userId
+      })
+      .then(function (results){
+        res.json(results);
+      })
+      .catch(function (error){
+        next(new Error('Couldnt create new rsvp: ', error));
       });
-};
-
-//adds rsvps to the rsvp table.
-var addRsvp = function(req, res, next){
-  var starttime = req.body.starttime,
-    endtime = req.body.endtime,
-    courtName = req.body.courtName,
-    userId = req.body.userId;
-
-  var courtId = findCourt(req, res, next);
-
-  // should we add a date column to the
-  // rsvp db table? date isn't being captured right
-  // now
-  db.RSVP.create({
-    starttime: starttime,
-    endtime: endtime,
-    court_id: courtId,
-    user_id: userId
-  }).complete(function(err, results){
-    results.sendStatus(201);
-  });
+    });
 };
 
 //finds all rsvps for a spcfic user
@@ -75,24 +61,8 @@ var allRsvp = function(req, res, next){
   });
 };
 
-//creates the court if it's not already in the database
-var addCourt = function(req, res, next){
-  db.Court.create({
-    name: req.body.courtName,
-    address:req.body.address,
-    longitude: req.body.longitude,
-    lattitude:req.body.lattitude,
-    rating: req.body.rating
-  }).then(function(err, results){
-    return results;
-  });
-};
-
-//exports all functions so they can be referenced
 module.exports = {
-  findCourt: findCourt,
   addRsvp: addRsvp,
   findRsvp: findRsvp,
-  allRsvp: allRsvp,
-  addCourt: addCourt
+  allRsvp: allRsvp
 };

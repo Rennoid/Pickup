@@ -55,10 +55,10 @@ module.exports = {
       lattitude:req.body.lattitude,
       rating: req.body.rating
     })
-    .then(function(results){
+    .then(function (results){
       res.json(results);
     })
-    .catch(function(error){
+    .catch(function (error){
       next(new Error('Couldnt add that court: ', error));
     });
   }
