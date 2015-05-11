@@ -1,13 +1,14 @@
 <div id='user-partial' class="auth-container">
 
-<!--   
-  NOTE: this is wishful coding : not totally sure how the current user data will be accessed - 
-  so the ng-models and variable names will need to be updated. Mostly meant to be representative of things 
-  we may choose to do on the view. I figure this can be changed as we go. 
+<!--
+  NOTE: this is wishful coding : not totally sure how the current user data will be accessed -
+  so the ng-models and variable names will need to be updated. Mostly meant to be representative of things
+  we may choose to do on the view. I figure this can be changed as we go.
 -->
 
   <!-- display the current user's username -->
   <h3>Welcome <span ng-model='currentUser'>{{ currentUser.username }}</span></h3>
+  <h3 href='#/signout' ng-click='signout()'>signout</h3>
 
   <!-- display when the user joined Pickup!  -->
   <h6>Ballin since <span ng-model='currentUser'> {{ currentUser.createdAt | date:'longDate'}}</span></h6>

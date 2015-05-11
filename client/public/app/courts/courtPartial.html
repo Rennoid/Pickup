@@ -1,7 +1,7 @@
 <div ng-if='court.currentCourtData.name !== ""' id='court-partial' class="rsvp-container">
 
   <!-- display the selected court's name -->
-  <h4 ng-model='court'> Schedule for {{ court.currentCourtData.name }}</h3>
+  <h4 ng-model='court'> Schedule for {{ court.currentCourtData.name }}</h4>
 
   <!-- display when the selected court's address  -->
   <h5 ng-model='court'> {{ court.currentCourtData.address }}</h5>
@@ -9,7 +9,7 @@
   <!-- display today's schedule for the selected court -->
   <h4>Date: {{ court.currentCourtData.date | date:'longDate'}}</h4>
 
-  
+
   <div ng-repeat='rsvp in court.currentCourtData.schedule'>
     <tr><td>TIME SLOT: {{ rsvp.starttime | date:'shortTime' }}</td><td> RSVP's: {{ rsvp.count }} </td></tr>
     <!-- Still need to figure out how to configure database to give me a count. Right now they are just grouped with no count -->
@@ -28,6 +28,6 @@
         <button class='buttonInput' type='submit' ng-disabled="rsvpForm.$invalid">Submit RSVP!</button>
       </center>
     </form>
-  </div> <!-- end rsvp-submit --> 
+  </div> <!-- end rsvp-submit -->
 
 </div> <!-- end court partial -->
