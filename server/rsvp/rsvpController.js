@@ -31,9 +31,12 @@ var addRsvp = function (req, res, next){
     });
 };
 
+//finds all rsvps for a spcfic user
 var findRsvp = function(req, res, next){
   var userId = req.params.userId;
 
+  //checks rsvp table for the UserId and include the Court where
+  //the user is rsvped to
   db.RSVP.findAll({where:{UserId: userId}, include:[db.Court]})
     .then(function (results){
       res.json(results);
@@ -43,6 +46,7 @@ var findRsvp = function(req, res, next){
     });
 };
 
+//finds all rsvps for a specific court based off the court ID
 var allRsvp = function(req, res, next){
   db.RSVP.findAll({court: courtId})
   .then(function(results){

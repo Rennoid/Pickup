@@ -2,7 +2,7 @@ var db = require('../db');
 var sequelize = require('sequelize');
 
 module.exports = {
-  
+
   /**
    * Get all the rsvp's for the court with the id
    * that is passed in. This is called in the second part
@@ -46,6 +46,8 @@ module.exports = {
       });
   },
 
+
+  //adds court to the database
   addCourt: function(req, res, next){
     db.Court.create({
       name: req.body.name,
