@@ -50,13 +50,11 @@ var addRsvp = function (req, res, next){
     }
   })
     .spread(function (instance, created) {
-      console.log("\nCOURT INSTANCE: \n", instance);
-      console.log("\nCOURT CREATED: \n", created);
       db.RSVP.create({
         starttime: starttime,
         endtime: endtime,
-        courtId: instance.dataValues.id,
-        userId: userId
+        CourtId: instance.dataValues.id,
+        UserId: userId
       })
       .then(function (results){
         res.json(results);
@@ -72,6 +70,7 @@ var findRsvp = function(req, res, next){
 
   db.RSVP.findAll({where:{UserId: userId}, include:[db.Court]})
     .then(function (results){
+      console.log("RESULTS: ", results);
       res.json(results);
     })
     .catch(function(error){
