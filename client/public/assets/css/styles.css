@@ -76,6 +76,10 @@ p {
   height: 75%;
 }
 
+.rsvp-container p {
+  background-color: none;
+}
+
 .auth-container{
   float: right;
   border: 0.5em solid orange;

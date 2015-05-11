@@ -2,8 +2,6 @@ angular.module('app.services', [])
 
 .factory('Auth', function ($http, $location, $window) {
 
-  //$scope.user = {};
-
   var login = function (user) {
     console.log('USER:' , user);
     return $http({
@@ -29,7 +27,6 @@ angular.module('app.services', [])
   };
 
   var isAuth = function () {
-    console.log("AUTH CHECK: ", !!$window.localStorage.getItem('com.app'));
     return !!$window.localStorage.getItem('com.app');
   };
 
@@ -47,25 +44,65 @@ angular.module('app.services', [])
   };
 })
 
-.factory('Court', function ($http, $location, $window){
-  var getCourtInfo = function() {
+.service('Court', function ($http){
+  // Sets initial data for courts partial
+  // Can possibly be removed now
+  this.currentCourtData = {
+    name: "",
+    address: "",
+    schedule: [],
+    date: new Date()
+  };
+
+  // Attempts to find if an object returned
+  // by Google Places API is in our database
+  this.getCourtInfo = function(court) {
     return $http({
       method: 'GET',
-      url: '/api/rsvp/findCourt'
+      url: '/api/court/findCourt',
+      params: court
     })
-    .success(function(data, status, headers, config) {
-      return data;
-    })
-    .error(function(data, status, headers, config) {
-      return data;
+    .then(function(response){
+      return response.data;
     });
   };
 
-  return {
-    getCourtInfo: getCourtInfo
+  // Called in the map Controller
+  // Sets up the court partial with initial data
+  // when a marker is clicked on and if it exists
+  // in our database, returns all applicable RSVP's.
+  this.getCourtSchedule = function(court) {
+    var that = this;
+    this.getCourtInfo(court).then(function(results){
+      //console.log(results);
+      that.currentCourtData.name = results.name;
+      that.currentCourtData.address = results.address;
+      that.currentCourtData.schedule = [];
+      if(results.id){
+        $http({
+          method: 'GET',
+          url: '/api/court/'+results.id+'/rsvp'
+        })
+        .then(function (response){
+          var rsvps = response.data;
+          //console.log(rsvps);
+          that.currentCourtData.schedule = rsvps;
+        })
+        .catch(function(error){
+          return new Error('An error occurred while looking up the schedule: ',error);
+        });
+      }
+    })
+    .catch(function(error){
+      return new Error('An error occurred while looking up the schedule: ',error);
+    });
   };
 })
 
+/**
+ * Retrieves RSVP's for user so it can be rendered in
+ * user profile partial
+ */
 .service('Profile', ['$http', function ($http){
   this.getRSVP = function(userId){
     return $http({

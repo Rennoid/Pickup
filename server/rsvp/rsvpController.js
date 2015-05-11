@@ -40,8 +40,8 @@ module.exports = {
         res.json(results);
       }
     })
-    .fail(function(error){
-      next(new Error('unable to find court ID'));
+    .catch(function(error){
+      next(new Error('unable to find court ID: ', error));
     });
   },
 
