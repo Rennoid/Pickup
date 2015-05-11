@@ -1,24 +1,31 @@
-<div ng-if='court.currentCourtData.name !== ""' id='court-partial' class="rsvp-container">
+<div ng-if='court.currentCourtData.name' id='court-partial' class="rsvp-container">
 
   <div class="courtName">
     <!-- display the selected court's name -->
+    <div class="close" ng-click="court.currentCourtData = {}">X</div>
     <h4 class="courtName" ng-model='court'>{{ court.currentCourtData.name }}</h4>
     <!-- display when the selected court's address  -->
     <p ng-model='court'> {{ court.currentCourtData.address }}</p>
   </div>
   <!-- display today's schedule for the selected court -->
 
-  <div ng-repeat='rsvp in court.currentCourtData.schedule'>
-    <tr><td>TIME SLOT: {{ rsvp.starttime | date:'shortTime' }}</td><td> RSVP's: {{ rsvp.count }} </td></tr>
-    <!-- Still need to figure out how to configure database to give me a count. Right now they are just grouped with no count -->
+  <div>
+    <center>
+    <table>
+
+      <tr><th class='sched'>Current Schedule:</th></tr>
+      <tr ng-repeat='rsvp in court.currentCourtData.schedule'>
+        <td>{{ rsvp.count }} Players @ {{ rsvp.starttime | date:'shortTime' }}</td>
+      </tr>
+    </table>
+    </center>
   </div>
 
-  <!-- add ability to rsvp for a time-slot -->
   <div class='rsvp-submit userInput'>
     <h4>Schedule A Time To Play!</h4>
     <form class = 'rsvpForm' name='rsvpForm' ng-submit='addRsvp()' novalidate>
 
-      <input type='date' ng-model='rsvp.date' placeholder='Date'  required/>
+      <input type='date' ng-model='rsvp.date' placeholder='{ new Date() }'  required/>
       <input type='time' ng-model='rsvp.starttime' placeholder='Start-time' required/>
       <input type='time' ng-model='rsvp.endtime' placeholder='End-time' required/>
       <button class='buttonInput' type='submit' ng-disabled="rsvpForm.$invalid">Submit RSVP!</button>

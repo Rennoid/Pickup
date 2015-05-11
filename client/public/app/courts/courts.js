@@ -32,6 +32,7 @@ angular.module('app.courts', [])
       .then(function (data){
         $scope.reloadState();
       });
+
     $scope.rsvp = null;
     $scope.court.currentCourtData = {};
   };
