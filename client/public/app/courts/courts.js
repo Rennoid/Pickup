@@ -25,5 +25,7 @@ angular.module('app.courts', [])
     };
     //sends rsvp to rsvp table
     Court.postRsvp(rsvp);
+    $scope.rsvp = null;
+    $scope.court.currentCourtData = {};
   };
 });
