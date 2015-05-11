@@ -9,7 +9,13 @@
   <!-- display today's schedule for the selected court -->
 
   <div ng-repeat='rsvp in court.currentCourtData.schedule'>
-    <tr><td>TIME SLOT: {{ rsvp.starttime | date:'shortTime' }}</td><td> RSVP's: {{ rsvp.count }} </td></tr>
+    <center>
+    <table>
+
+      <tr><th class='sched'>Current Schedule:</th></tr>
+      <tr><td>{{ rsvp.count }} Players @ {{ rsvp.starttime | date:'shortTime' }}</td></tr>
+    </table>
+    </center>
     <!-- Still need to figure out how to configure database to give me a count. Right now they are just grouped with no count -->
   </div>
 

@@ -128,7 +128,7 @@ p.address, b {
   margin-right: 5em;
   display: inline-block;
   background-color: gray;
-  width: 45%;
+  width: 40%;
   height: 75%;
   background: url('../img/hardwood.jpg');
   background-size: cover;
@@ -207,6 +207,20 @@ button.buttonInput {
   -webkit-text-stroke-color: white;
 }
 
+table{
+  width: 50%;
+  border: 2px solid black;
+  text-align: center;
+  font-family: 'Biryani', sans-serif;  
+  font-size: 1em;
+}
+
+th.sched {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 3px;
+}
+
 table.rsvpTable {
   width: 98%;
   border: 2px solid black;
@@ -224,6 +238,7 @@ th.date, th.time, th.court  {
   background: orange;
   
 }
+
 
 .date {
   width: 8%;
