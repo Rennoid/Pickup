@@ -16,6 +16,8 @@ angular.module('app.users', [])
     $scope.currentUser.rsvps = userRsvps;
   });
 
+  //signs user out of logged in status
+  //redirects user to login page
   $scope.signout = function(){
     Auth.signout();
   };

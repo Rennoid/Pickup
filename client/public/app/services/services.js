@@ -2,6 +2,7 @@ angular.module('app.services', [])
 
 .factory('Auth', function ($http, $location, $window) {
 
+  //submits post request to backend to login.
   var login = function (user) {
     return $http({
       method: 'POST',
@@ -14,6 +15,7 @@ angular.module('app.services', [])
     });
   };
 
+  //submits post request to backend to signup
   var signup = function (user) {
     return $http({
       method: 'POST',
@@ -25,16 +27,19 @@ angular.module('app.services', [])
     });
   };
 
+  //checks to see if user has token
   var isAuth = function () {
     return !!$window.localStorage.getItem('com.app');
   };
 
+  //signouts out users
+  //redirects user to login page
   var signout = function () {
     $window.localStorage.removeItem('com.app');
     $location.path('/login');
   };
 
-
+  //allows functions to be referenced
   return {
     login: login,
     signup: signup,
@@ -121,7 +126,7 @@ angular.module('app.services', [])
       url: '/api/rsvp/'+userId,
     })
     .then(function (response){
-      return response.data; 
+      return response.data;
     });
   };
 }]);
