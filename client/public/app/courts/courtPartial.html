@@ -13,7 +13,21 @@
   <div ng-repeat='rsvp in court.currentCourtData.schedule'>
     <tr><td>TIME SLOT: {{ rsvp.starttime | date:'shortTime' }}</td><td> RSVP's: {{ rsvp.count }} </td></tr>
     <!-- Still need to figure out how to configure database to give me a count. Right now they are just grouped with no count -->
-    <!-- Also need to add ability to rsvp for a time-slot -->
   </div>
+
+  <!-- add ability to rsvp for a time-slot -->
+  <div class='rsvp-submit userInput'>
+    <h4>RSVP to play at this court!</h4>
+    <form name='rsvpForm' ng-submit='addRsvp()' novalidate>
+
+      Date: <input type='date' ng-model='rsvp.date' placeholder='Date' required>
+      <input type='time' ng-model='rsvp.starttime' placeholder='Start-time' required>
+      <input type='time' ng-model='rsvp.endtime' placeholder='End-time' required><br>
+
+      <center>
+        <button class='buttonInput' type='submit' ng-disabled="rsvpForm.$invalid">Submit RSVP!</button>
+      </center>
+    </form>
+  </div> <!-- end rsvp-submit --> 
 
 </div> <!-- end court partial -->
