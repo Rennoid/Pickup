@@ -11,13 +11,17 @@ angular.module('app.courts', [])
     var starttime = $scope.rsvp.starttime;
     var endtime = $scope.rsvp.endtime;
     var courtName = $scope.court.currentCourtData.name;
+    var address = $scope.court.currentCourtData.address;
+    var placeId = $scope.court.currentCourtData.placeId;
     var user = JSON.parse($window.localStorage.getItem('com.app'));
     var rsvp = {
       'date': date,
       'starttime': starttime,
       'endtime': endtime,
       'courtName': courtName,
-      'userId': user.userId
+      'userId': user.userId,
+      'placeId': placeId,
+      'address': address
     };
     //sends rsvp to rsvp table
     Court.postRsvp(rsvp);

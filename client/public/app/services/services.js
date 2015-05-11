@@ -82,6 +82,8 @@ angular.module('app.services', [])
       that.currentCourtData.name = results.name;
       that.currentCourtData.address = results.address;
       that.currentCourtData.schedule = [];
+      that.currentCourtData.id = results.id;
+      that.currentCourtData.placeId = results.placeId;
       if(results.id){
         $http({
           method: 'GET',
