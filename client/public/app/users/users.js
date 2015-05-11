@@ -1,7 +1,7 @@
 angular.module('app.users', [])
 
-// create UserController to send data from database to the view 
-.controller('UserController', function ($scope,$window,Profile) {
+// create UserController to send data from database to the view
+.controller('UserController', function ($scope,$window,Profile, Auth) {
 
   // Puts relevant from the user token into scope to be rendered
   var user = JSON.parse($window.localStorage.getItem('com.app'));
@@ -15,4 +15,11 @@ angular.module('app.users', [])
   Profile.getRSVP(user.userId).then(function(userRsvps){
     $scope.currentUser.rsvps = userRsvps;
   });
+
+  $scope.signout = function(){
+    Auth.signout();
+  };
+
+
+
 });
