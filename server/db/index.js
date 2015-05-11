@@ -37,6 +37,7 @@ RSVP.belongsTo(User);
 
 //Creates the tables
 
+//inputting in table prefilled with data
 orm.sync({force:true}).then(function(){
   User.bulkCreate([
     { username: 'kurt',password:'kurt', email:'kurt@kurt.com' },
@@ -56,9 +57,9 @@ orm.sync({force:true}).then(function(){
     { starttime: new Date('December 20, 2015 13:00:00'), endtime: new Date('December 20, 2015 14:00:00'), CourtId: 1, UserId:1 },
     { starttime: new Date('December 18, 2015 11:00:00'), endtime: new Date('December 18, 2015 12:00:00'), CourtId: 2, UserId:2 },
     { starttime: new Date('December 19, 2015 15:00:00'), endtime: new Date('December 19, 2015 16:00:00'), CourtId: 3, UserId:3 },
-    { starttime: new Date('December 21, 2015 15:00:00'), endtime: new Date('December 21, 2015 16:00:00'), CourtId: 4, UserId:1 }, 
-    { starttime: new Date('December 21, 2015 15:00:00'), endtime: new Date('December 21, 2015 16:00:00'), CourtId: 4, UserId:2 }, 
-    { starttime: new Date('December 21, 2015 17:00:00'), endtime: new Date('December 21, 2015 18:00:00'), CourtId: 4, UserId:3 } 
+    { starttime: new Date('December 21, 2015 15:00:00'), endtime: new Date('December 21, 2015 16:00:00'), CourtId: 4, UserId:1 },
+    { starttime: new Date('December 21, 2015 15:00:00'), endtime: new Date('December 21, 2015 16:00:00'), CourtId: 4, UserId:2 },
+    { starttime: new Date('December 21, 2015 17:00:00'), endtime: new Date('December 21, 2015 18:00:00'), CourtId: 4, UserId:3 }
   ]);
 });
 

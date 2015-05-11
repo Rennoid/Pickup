@@ -1,5 +1,6 @@
 var db = require('../db');
 
+//finds court ID in the courts table
 var findCourt = function(req, res, next){
   var starttime = req.body.starttime,
     endtime = req.body.endtime,
@@ -10,18 +11,19 @@ var findCourt = function(req, res, next){
       if(!court) {
         addCourt(req, res, next);
       }
-      // line 20 is executing whether or not a 
+      // line 20 is executing whether or not a
       // court already exists in the database,
-      // so it throws an error when the court 
-      // isn't in the database and needs to be added; 
-      // not sure how to get access to the courtId 
-      // from the `addCourt` function in order to 
-      // return the id in all cases. 
+      // so it throws an error when the court
+      // isn't in the database and needs to be added;
+      // not sure how to get access to the courtId
+      // from the `addCourt` function in order to
+      // return the id in all cases.
       var courtID = db.Court.court.id;
       return courtID;
       });
 };
 
+//adds rsvps to the rsvp table.
 var addRsvp = function(req, res, next){
   var starttime = req.body.starttime,
     endtime = req.body.endtime,
@@ -30,9 +32,9 @@ var addRsvp = function(req, res, next){
 
   var courtId = findCourt(req, res, next);
 
-  // should we add a date column to the 
-  // rsvp db table? date isn't being captured right 
-  // now 
+  // should we add a date column to the
+  // rsvp db table? date isn't being captured right
+  // now
   db.RSVP.create({
     starttime: starttime,
     endtime: endtime,
@@ -43,9 +45,12 @@ var addRsvp = function(req, res, next){
   });
 };
 
+//finds all rsvps for a spcfic user
 var findRsvp = function(req, res, next){
   var userId = req.params.userId;
 
+  //checks rsvp table for the UserId and include the Court where
+  //the user is rsvped to
   db.RSVP.findAll({where:{UserId: userId}, include:[db.Court]})
     .then(function (results){
       res.json(results);
@@ -55,6 +60,7 @@ var findRsvp = function(req, res, next){
     });
 };
 
+//finds all rsvps for a specific court based off the court ID
 var allRsvp = function(req, res, next){
   db.RSVP.findAll({court: courtId})
   .then(function(results){
@@ -69,6 +75,7 @@ var allRsvp = function(req, res, next){
   });
 };
 
+//creates the court if it's not already in the database
 var addCourt = function(req, res, next){
   db.Court.create({
     name: req.body.courtName,
@@ -81,6 +88,7 @@ var addCourt = function(req, res, next){
   });
 };
 
+//exports all functions so they can be referenced
 module.exports = {
   findCourt: findCourt,
   addRsvp: addRsvp,
