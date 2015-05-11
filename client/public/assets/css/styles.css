@@ -255,3 +255,11 @@ td.ng-binding {
   font-family: 'Biryani', sans-serif;  
   font-size: 0.8em;
 }
+
+.close {
+  float: right;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 5px;
+  cursor: pointer;
+}
