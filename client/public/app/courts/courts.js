@@ -23,7 +23,8 @@ angular.module('app.courts', [])
       'address': address
     };
 
-    Court.postRsvp(rsvp);
-    $window.setTimeout($state.reload, 1000);
+    Court.postRsvp(rsvp)
+      .then(function (data){
+      }); 
   };
 });
