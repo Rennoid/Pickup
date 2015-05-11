@@ -51,12 +51,7 @@ angular.module('app.services', [])
 .service('Court', function ($http){
   // Sets initial data for courts partial
   // Can possibly be removed now
-  this.currentCourtData = {
-    name: "",
-    address: "",
-    schedule: [],
-    date: new Date()
-  };
+  this.currentCourtData = {};
 
   // Attempts to find if an object returned
   // by Google Places API is in our database
