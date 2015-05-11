@@ -19,12 +19,30 @@ h2 {
   color: orange;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
+}
 
+h3 {
+  text-align: center;
+  font-family: 'Audiowide', cursive;
+  font-size: 2em;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  margin-bottom: 0em;
+  margin-top: 0em;
+}
+
+h6 {
+  margin-top: 0.3em;
+  font-family: 'Playball', cursive;
+  font-size: 1.1em;
+  padding-bottom: 0em;
+  color: white;
 }
 
 body {
   background-color: black;
-  background-image: url('http://www.sportsintofaith.com/isfs/wp-content/uploads/2014/01/Basketball-Court1.jpg');
+  background-image: url('../img/background.jpg');
   background-size: cover;
 }
 
@@ -75,6 +93,7 @@ p {
   background-color: gray;
   width: 30%;
   height: 75%;
+
 }
 
 .rsvp-container p {
@@ -89,8 +108,9 @@ p {
   display: inline-block;
   background-color: white;
   width: 30%;
-  height: 46%;
   text-align: center;
+  background: url('../img/hardwood.jpg');
+
 }
 
 form { 
@@ -98,7 +118,7 @@ form {
   margin: 0 auto;
 }
 
-.userInput button {
+.userInput button, .logout button{
   margin-top: 0.1em;
   width: 100%;
   padding: 0px;
@@ -114,7 +134,13 @@ form {
   float:center;
 }
 
-.userInput button:hover {
+.logout button {
+  width: 95%;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.userInput button:hover, .logout button:hover {
   color: orange;
   background: black;
 }
@@ -128,4 +154,42 @@ form {
   color: orange;
 }
 
+.logout a {
+  color: black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+}
 
+table.rsvpTable {
+  width: 98%;
+  border: 2px solid black;
+  margin: 0 auto;
+  margin-top: 0.5em;
+}
+
+th.date, th.time, th.court  {
+  text-align: center;
+  font-family: 'Playball', cursive;
+  margin: 0 auto;
+  font-size: 1.5em;
+  border: 2px solid black;
+  color: white;
+  background: orange;
+  
+}
+
+.date {
+  width: 8%;
+}
+.time {
+  width: 20%;
+}
+.court {
+  width: 55%;
+}
+
+td.ng-binding {
+  text-align: center;
+  font-family: 'Biryani', sans-serif;  
+  font-size: 0.8em;
+}

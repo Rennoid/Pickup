@@ -7,22 +7,28 @@
 -->
 
   <!-- display the current user's username -->
-  <h3>Welcome <span ng-model='currentUser'>{{ currentUser.username }}</span></h3>
-  <h3 href='#/signout' ng-click='signout()'>signout</h3>
-
-  <!-- display when the user joined Pickup!  -->
-  <h6>Ballin since <span ng-model='currentUser'> {{ currentUser.createdAt | date:'longDate'}}</span></h6>
-
-  <!-- display list of user's current rsvp's  -->
-  <h3>My Games:</h3>
-  <!-- repeat for each upcoming rsvp that the user has submitted -->
-  <div ng-repeat='rsvp in currentUser.rsvps'>
-    <tr>
-      <td>{{ rsvp.starttime | date:'shortDate' }}</td>
-      <td> {{ rsvp.Court.name }} </td>
-      <td>{{ rsvp.starttime | date:'shortTime' }} -</td>
-      <td>{{ rsvp.endtime | date:'shortTime' }}</td>
-    </tr>
+  <div class="loginHeader">
+    <h3>Welcome <span ng-model='currentUser'>{{ currentUser.username }}</span></h3>
+  
+    <!-- display when the user joined Pickup!  -->
+    <h6>Ballin since <span ng-model='currentUser'> {{ currentUser.createdAt | date:'MMM yy'}}</span></h6>
   </div>
-
+  <!-- display list of user's current rsvp's  -->
+  <h3>My Current Games:</h3>
+  <!-- repeat for each upcoming rsvp that the user has submitted -->
+  <table class="rsvpTable">
+      <tr>
+        <th class="date">Date</th>
+        <th class="court">Court</th>
+        <th class="time">Time</th>
+      </tr>
+    <tr ng-repeat='rsvp in currentUser.rsvps'>
+          <td>{{ rsvp.starttime | date:'MM/dd' }}</td>
+          <td> {{ rsvp.Court.name }}</td>
+          <td>{{ rsvp.starttime | date:'h' }}-{{ rsvp.endtime | date:'h a' }}</td>
+    </tr>
+  </table>
+  <div class="logout">
+    <button><a href='#/signout' ng-click='signout()'>Logout</a></button>
+  </div>
 </div> <!-- end user partial  -->
