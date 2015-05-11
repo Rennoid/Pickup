@@ -1,6 +1,6 @@
 <div class='signup-partial auth-container'>
 
-  <h2>Signup</h2>
+  <h2>Sign Up</h2>
   <div class='userInput'>
     <form name="signupForm" ng-submit='signup()' novalidate>
       <input type='text' ng-model='user.username' placeholder='Username' ng-minlength="4" required>
@@ -10,8 +10,8 @@
       <input type="email" ng-model='user.email' placeholder='Email' ng-minlength="4" required>
 
       <center>
-        <button class='buttonInput' type='submit' ng-disabled="signupForm.$invalid">Signup</button><br>
-        <a ui-sref="login">Already have an account? <strong>Login</strong> ...</a>
+        <button class='buttonInput' type='submit' ng-disabled="signupForm.$invalid">Sign Up</button><br>
+        <a ui-sref="login">Already have an account? <strong>Login</strong></a>
       </center>
     </form>
 
