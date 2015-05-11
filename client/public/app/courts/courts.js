@@ -1,11 +1,15 @@
 angular.module('app.courts', [])
 
 // create CourtController to send data from database to the view
-.controller('CourtController', function ($scope, $window, Court) {
+.controller('CourtController', function ($scope, $state, $window, Court) {
   $scope.court = Court;
+  $scope.state = $state;
   $scope.rsvp = {};
 
-  //allows users to add rsvp.  prepares resvp to be stored in table
+  $scope.reloadState = function() {
+    $scope.state.reload();
+  }
+  //allows users to add rsvp.  prepares rsvp to be stored in table
   $scope.addRsvp = function () {
     var date = $scope.rsvp.date;
     var starttime = $scope.rsvp.starttime;
@@ -23,8 +27,12 @@ angular.module('app.courts', [])
       'placeId': placeId,
       'address': address
     };
-    //sends rsvp to rsvp table
-    Court.postRsvp(rsvp);
+
+    Court.postRsvp(rsvp)
+      .then(function (data){
+        $scope.reloadState();
+      });
+
     $scope.rsvp = null;
     $scope.court.currentCourtData = {};
   };

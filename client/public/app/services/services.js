@@ -11,6 +11,7 @@ angular.module('app.services', [])
     })
     .then(function (resp) {
       // return resp.data.token;
+      $location.path('/');
       return resp.data;
     });
   };
@@ -23,6 +24,7 @@ angular.module('app.services', [])
       data: user
     })
     .then(function (resp) {
+      $location.path('/');
       return resp.data;
     });
   };
