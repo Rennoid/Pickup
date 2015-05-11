@@ -42,6 +42,7 @@ RSVP.belongsTo(User);
 //Creates the tables
 
 //inputting in table prefilled with data
+
 // orm.sync({force:true}).then(function(){
 //   User.bulkCreate([
 //     { username: 'kurt',password:'kurt', email:'kurt@kurt.com' },
@@ -66,6 +67,7 @@ RSVP.belongsTo(User);
 //     { starttime: new Date('December 21, 2015 17:00:00'), endtime: new Date('December 21, 2015 18:00:00'), CourtId: 4, UserId:3 }
 //   ]);
 // });
+
 
 orm.sync();
 

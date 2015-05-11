@@ -91,8 +91,25 @@ angular.module('app.services', [])
         })
         .then(function (response){
           var rsvps = response.data;
-          //console.log(rsvps);
-          that.currentCourtData.schedule = rsvps;
+          var rsvpsByTime = {};
+
+          //going through all rsvps returned back for a given court
+          for(var i = 0; i < rsvps.length; i ++){
+            if(!rsvpsByTime[rsvps[i]["starttime"]]) {
+              rsvpsByTime[rsvps[i]["starttime"]]= 1;
+            } else {
+              rsvpsByTime[rsvps[i]["starttime"]]= rsvpsByTime[rsvps[i]["starttime"]]+1;
+            }
+          }
+          //blankArray turns the object back into an Array with
+          // objects inside with different start times
+          var blankArray = [];
+          for(var key in rsvpsByTime){
+            var starttime = key;
+            var endtime = key + 1
+            blankArray.push({starttime: starttime, count: rsvpsByTime[key]})
+          }
+          that.currentCourtData.schedule = blankArray;
         })
         .catch(function(error){
           return new Error('An error occurred while looking up the schedule: ',error);

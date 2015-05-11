@@ -13,8 +13,7 @@ module.exports = {
 
     db.RSVP.findAll({where:{CourtId:courtId},
       /* Still needs to be adjusted to properly create a count column */
-      attributes: ['starttime','endtime',sequelize.fn('count', sequelize.col('UserId'))],
-      group:['starttime']})
+      attributes: ['starttime','endtime']})
       .then(function(results){
         res.json(results);
       })
