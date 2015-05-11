@@ -1,8 +1,12 @@
 var Sequelize = require('sequelize');
 
-var orm = new Sequelize('pickupDB', 'root','', {
-  dialect: 'mysql'
-});
+if(process.env.DATABASE_URL) {
+  var orm = new Sequelize(process.env.DATABASE_URL);
+} else {
+  var orm = new Sequelize('pickupDB', 'root','', {
+    dialect: 'mysql'
+  });
+}
 
 //creates new row in User Table
 var User = orm.define('User', {
