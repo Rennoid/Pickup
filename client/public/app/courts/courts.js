@@ -8,7 +8,8 @@ angular.module('app.courts', [])
 
   $scope.reloadState = function() {
     $scope.state.reload();
-  }
+  };
+  
   //allows users to add rsvp.  prepares rsvp to be stored in table
   $scope.addRsvp = function () {
     var date = $scope.rsvp.date;

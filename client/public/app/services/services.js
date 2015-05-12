@@ -73,15 +73,25 @@ angular.module('app.services', [])
   // when a marker is clicked on and if it exists
   // in our database, returns all applicable RSVP's.
   this.getCourtSchedule = function(court) {
+    // Set the this variable because .then will execute in global context
     var that = this;
-    this.getCourtInfo(court).then(function(results){
-      //console.log(results);
+
+    // Retrieves either data in our database or data directly
+    // from the Google Places query (retrieved in map.js)
+    this.getCourtInfo(court)
+    .then(function(results){
+      
+      // Sets the currentCourt data held in the Court service
+      // This populates courtPartial
       that.currentCourtData.name = results.name;
       that.currentCourtData.address = results.address;
       that.currentCourtData.schedule = [];
       that.currentCourtData.id = results.id;
       that.currentCourtData.placeId = results.placeId;
+
+      // if the results contain a unique id from our database..
       if(results.id){
+        // send a request to get all the rsvp's for that court
         $http({
           method: 'GET',
           url: '/api/court/'+results.id+'/rsvp'
@@ -91,6 +101,8 @@ angular.module('app.services', [])
           var rsvpsByTime = {};
 
           //going through all rsvps returned back for a given court
+          /* This process is grouping each rsvp by group time
+             and providing a count for each rvsp at the same time */
           for(var i = 0; i < rsvps.length; i ++){
             if(!rsvpsByTime[rsvps[i]["starttime"]]) {
               rsvpsByTime[rsvps[i]["starttime"]]= 1;
@@ -98,13 +110,15 @@ angular.module('app.services', [])
               rsvpsByTime[rsvps[i]["starttime"]]= rsvpsByTime[rsvps[i]["starttime"]]+1;
             }
           }
-          //blankArray turns the object back into an Array with
-          // objects inside with different start times
+
+          // Placing the objects containing a start time and the number of people
+          // rsvp'd for that start time into an array that will be
+          // displayed in the Court partial
           var blankArray = [];
           for(var key in rsvpsByTime){
             var starttime = key;
-            var endtime = key + 1
-            blankArray.push({starttime: starttime, count: rsvpsByTime[key]})
+            var endtime = key + 1;
+            blankArray.push({starttime: starttime, count: rsvpsByTime[key]});
           }
           that.currentCourtData.schedule = blankArray;
         })
@@ -118,6 +132,11 @@ angular.module('app.services', [])
     });
   };
 
+  /**
+   * [postRsvp description]
+   * @param  {[Object]} rsvp [Holds the entered form data from the court partial]
+   * @return {[Object]}      [Returns RSVP data from database]
+   */
   this.postRsvp = function (rsvp) {
     return $http({
       method: 'POST',
@@ -125,17 +144,19 @@ angular.module('app.services', [])
       data: rsvp
     })
     .then(function (resp) {
-      // return resp.data.token;
       return resp.data;
     });
   };
 })
 
-/**
- * Retrieves RSVP's for user so it can be rendered in
- * user profile partial
- */
+
 .service('Profile', ['$http', function ($http){
+
+  /**
+   * Retrieves RSVP data registered to a user
+   * @param  {[Number]} userId [Unique user id in database]
+   * @return {[Object]}        [RSVP object returned by sequelize]
+   */
   this.getRSVP = function(userId){
     return $http({
       method: 'GET',

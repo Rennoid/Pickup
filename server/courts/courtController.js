@@ -1,5 +1,4 @@
 var db = require('../db');
-var sequelize = require('sequelize');
 
 module.exports = {
 
@@ -11,8 +10,10 @@ module.exports = {
   getCourtRSVP: function (req, res ,next) {
     var courtId = req.params.courtId;
 
+    /* Currently is being less than gracefully because the sequelize query to
+    group by starttime and create a count for the amount of people in each hour block
+    is hard. Can be refined additionally by constraining it to a date */
     db.RSVP.findAll({where:{CourtId:courtId},
-      /* Still needs to be adjusted to properly create a count column */
       attributes: ['starttime','endtime']})
       .then(function(results){
         res.json(results);
@@ -33,7 +34,7 @@ module.exports = {
     db.Court.find({where:{placeId: placeId}})
       .then(function(results){
         if(!results) {
-          // return data from Google Places Library
+          // return data provided from Google Places Library
           res.json(req.query);
         } else {
           // return data from our database about the court

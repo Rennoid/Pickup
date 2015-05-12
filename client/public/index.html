@@ -28,108 +28,21 @@
   <script type="text/javascript" src="app/users/users.js"></script>
   <script type="text/javascript" src="app/services/services.js"></script>
   <script type="text/javascript" src="app/app.module.js"></script>
+
+  <!-- Used by gulp's livereload. Needs to be stripped out for production -->
   <script src="//localhost:35729/livereload.js"></script>
-
-  <script type="text/javascript">
-    $('body').append(
-      '<a href="http://hackreactor.com"> \
-      <img style="position: fixed; top: 0; right: 0; border: 0;" \
-      src="http://i.imgur.com/x86kKmF.png" \
-      alt="Built at Hack Reactor"> \
-      </a>'
-    );
-  </script>
+  
 </head>
-
 <body ng-app='app'>
 <h1>Pickup!</h1>
-
-  <!--  NAV BAR FOR LATER IF NEEDED
-  <nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#">Pickup!</a></h1>
-    </li>
-    
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-  <section class="top-bar-section">
- 
-    <ul class="right">
-      <li class="active"><a href="#">Sign In</a></li>
-      <li class="has-dropdown">
-        <a href="#">Right Button Dropdown</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-          <li class="active"><a href="#">Active link in dropdown</a></li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-  </nav> -->
-  
   <div class="map-container" ng-controller="mapController" ng-init="geolocateUser()">
+    <!-- Used id's. I am ashamed -->
     <div id="map-canvas"></div>
     <p class="address"><b>Address:</b><span id="address"></span>
     <span id="error"></span></p>
   </div>
-
   <div ui-view></div>
   <div ui-view='userInfo'></div>
   <div ui-view='courtInfo'></div>
-
-<!--  
-/////////////////////////////////////////////  
-
-LOGIN FORM
-
-/////////////////////////////////////////////
--->
-
-<!--   <div class="login-container">
-    <h2>Login</h2>
-    <div class="userInput">
-      <form>
-      Username: <br>
-        <input type="email" placeholder="Your Email Address" onclick="this.value = '' ">
-      </form>
-    </div>
-    <div class="pwInput">
-      <form>
-      Password: <br>
-        <input type="password" placeholder="Password" onclick="this.value =''">
-      </form>
-    </div>
-    <div class="buttonInput">
-      <form>
-          <button type="submit">Join A Game!</button><br>
-          <span>Not already a user? <a href='#'>Register Here</a></span>
-      </form>
-    </div>
-  </div> -->
-
-<!--  
-/////////////////////////////////////////////
-
-RSVP TABLE 
-
-/////////////////////////////////////////////
--->
-
-<!--   <div class="rsvp-container">
-    <h2>RSVP</h2>
-    <table style="width:100%">
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td> 
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td> 
-      <td>94</td>
-    </tr>
-  </table>
-  </div> -->
 </body>
 </html>

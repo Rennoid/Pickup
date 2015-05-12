@@ -22,6 +22,4 @@ angular.module('app.users', [])
     Auth.signout();
   };
 
-
-
 });

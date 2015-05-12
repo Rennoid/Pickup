@@ -33,31 +33,44 @@ angular.module('app.map', [])
    * @param  {[Object]} position [HTML5 Geolocation Object]
    */
   $scope.geolocationSuccess = function (position) {
+    // Creates a google maps latitude and longitude object from HTML geo coords
     var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+    // Uses the Geocode service to change your coordinates to an address
     $scope.writeAddressName(userLatLng);
 
+    // Sets how far you are initially zoomed in, where it's centered, and the type of map
     var myOptions = {
       zoom: 16,
       center: userLatLng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
+    // Creates the map object at the dom element passed with the declared options
     $scope.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
+    // Creates a marker on the map. Just the act of declaring it puts it on, so you
+    // don't need variable, but it seems odd to just use  new google.maps.Marker
     var marker = new google.maps.Marker({
       map: $scope.map,
       position: userLatLng
     });
 
+    // Creates a popup window object
     $scope.infowindow = new google.maps.InfoWindow();
+
+    // Declares the Google Places object (wrapper on top of the Google Maps object)
     $scope.service = new google.maps.places.PlacesService($scope.map);
 
+    // Sets the specifications for the Google Places search
     var request = {
       location: userLatLng,
       radius: 1000,
       types: ['park']
     };
 
+    // Uses one of the types of search Google Places has to offer (nearbySearch)
+    // The second parameter is a success callback to handle the results
     $scope.service.nearbySearch(request, $scope.populateMarkers);
   };
 
@@ -81,23 +94,30 @@ angular.module('app.map', [])
    * @param  {[Object]} place [Google Places Object representing a point of interest]
    */
   $scope.createMarker = function (place) {
+
+    // sets the basketball image to be used. This can also be a vector graphic. (one exists in assets/img)
     var image = {
       url: 'assets/img/verysmallball.png',
       size: new google.maps.Size(25,25),
       origin: new google.maps.Point(0,0),
       anchor: new google.maps.Point(0,0)
     };
-    var placeLoc = place.geometry.location;
+
+    // Creates the marker for the current google place location
     var marker = new google.maps.Marker({
       map: $scope.map,
-      position: placeLoc,
+      position: place.geometry.location,
       icon: image
     });
 
+    // Adds a click listener on the created marker that
+    // gets additional details from Google Places ($scope.service)
     google.maps.event.addListener(marker, 'click', function() {
       $scope.service.getDetails({ placeId: place.place_id }, function(thisplace,status){
         if(status === google.maps.places.PlacesServiceStatus.OK){
-          //console.log(thisplace);
+          // If successful, this will use the court service to retrieve the
+          // list of rsvp's for the court if it exists and set current court data
+          // in the Court service
           Court.getCourtSchedule({
             name: thisplace.name,
             address: thisplace.formatted_address,
@@ -105,7 +125,10 @@ angular.module('app.map', [])
           });
         }
       });
+
+      // Sets the content for this marker's popup window
       $scope.infowindow.setContent(place.name);
+      // Opens the popup window for this marker
       $scope.infowindow.open($scope.map, this);
     });
   };
@@ -119,8 +142,8 @@ angular.module('app.map', [])
   };
 
   /**
-   * Uses HTML5 geolocation to start the map building process
-   * via the success callback or displays an error if not available
+   * Conditionally provides HTML5 geolocation settings and on success, begins the process of finding Google Places locations
+   * If not, provides an error to the user
    */
   $scope.geolocateUser = function() {
     if (navigator.geolocation) {
@@ -133,9 +156,4 @@ angular.module('app.map', [])
       document.getElementById("error").innerHTML += "Your browser doesn't support the Geolocation API";
     }
   };
-
-  /**
-   * Sets entire process to start on load
-   */
-  // window.onload = geolocateUser;
 }]);

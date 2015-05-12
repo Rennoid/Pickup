@@ -1,8 +1,15 @@
 var Sequelize = require('sequelize');
 
+// For heroku deployment. If DATABASE_URL has been set as a 
+// config environment variable (exists in heroku), then use that.
+// Otherwise assume a base install of mysql
 if(process.env.DATABASE_URL) {
   var orm = new Sequelize(process.env.DATABASE_URL);
 } else {
+  // Change needed: Change to requiring in a config.json file
+  // so people's individual logins and db's can be stored
+  // Using this means you must have a pickupDB database on your local
+  // machine or it will fail.
   var orm = new Sequelize('pickupDB', 'root','', {
     dialect: 'mysql'
   });
@@ -19,8 +26,6 @@ var User = orm.define('User', {
 var Court = orm.define('Court', {
   name: Sequelize.STRING,
   address: Sequelize.STRING,
-  longitude: Sequelize.DECIMAL,
-  latitude: Sequelize.DECIMAL,
   rating: Sequelize.INTEGER,
   placeId: Sequelize.STRING
 });
@@ -39,9 +44,9 @@ User.hasMany(RSVP);
 RSVP.belongsTo(User);
 
 
-//Creates the tables
-
-//inputting in table prefilled with data
+// This commented out section is for prepopulation of data
+// It drops all tables in the database (force:true) and
+// inputs a large amount of 
 
 // orm.sync({force:true}).then(function(){
 //   User.bulkCreate([
@@ -51,10 +56,10 @@ RSVP.belongsTo(User);
 //   ]);
 
 //   Court.bulkCreate([
-//     { name: 'Venice Beach', address:'1800 Ocean Front Walk Venice, CA 90291', longitude:-118.47277, latitude: 33.98561, rating: 5, placeId: 'ChIJQ80ljrm6woAR70e2byLAbKk'},
-//     { name: 'Mosswood Park', address:'397 W MacArthur Blvd Oakland, CA 94611', longitude:-122.26121, latitude: 37.82464, rating: 5, placeId: 'EiwzOTcgVyBNYWNBcnRodXIgQmx2ZCwgT2FrbGFuZCwgQ0EgOTQ2MDksIFVTQQ'},
-//     { name: 'Potrero Hill Recreation Center', address:'801 Arkansas St. San Francisco, CA 94107', longitude:-122.39756, latitude: 37.75696, rating: 4, placeId: 'ChIJdUEEFLR_j4ARHo6_zTIvyuY'},
-//     { name: 'Aptos Park', address:'San Francisco, CA 94127, United States', longitude:-122.46670, latitude: 37.72850, rating: 2, placeId: 'ChIJqfFWfch9j4ARt0Ip6Y5y1Ow'},
+//     { name: 'Venice Beach', address:'1800 Ocean Front Walk Venice, CA 90291', rating: 5, placeId: 'ChIJQ80ljrm6woAR70e2byLAbKk'},
+//     { name: 'Mosswood Park', address:'397 W MacArthur Blvd Oakland, CA 94611', rating: 5, placeId: 'EiwzOTcgVyBNYWNBcnRodXIgQmx2ZCwgT2FrbGFuZCwgQ0EgOTQ2MDksIFVTQQ'},
+//     { name: 'Potrero Hill Recreation Center', address:'801 Arkansas St. San Francisco, CA 94107', rating: 4, placeId: 'ChIJdUEEFLR_j4ARHo6_zTIvyuY'},
+//     { name: 'Aptos Park', address:'San Francisco, CA 94127, United States', rating: 2, placeId: 'ChIJqfFWfch9j4ARt0Ip6Y5y1Ow'},
 //   ]);
 
 //   RSVP.bulkCreate([
@@ -68,12 +73,10 @@ RSVP.belongsTo(User);
 //   ]);
 // });
 
-
+// Creates tables if they are not there. Now that the ability to make
+// rsvp's is in the program, bulk data may not be needed at all.
+// Use either this or the sync(force:true) but not both
 orm.sync();
-
-// User.sync();
-// Court.sync();
-// RSVP.sync();
 
 //exports tables so other files can reference
 exports.User = User;
