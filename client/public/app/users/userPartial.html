@@ -25,7 +25,7 @@
     <tr ng-repeat='rsvp in currentUser.rsvps'>
           <td>{{ rsvp.starttime | date:'MM/dd' }}</td>
           <td> {{ rsvp.Court.name }}</td>
-          <td>{{ rsvp.starttime | date:'h' }}-{{ rsvp.endtime | date:'h a' }}</td>
+          <td>{{ rsvp.starttime | date:'h a' }} - {{ rsvp.endtime | date:'h a' }}</td>
     </tr>
   </table>
   <div class="logout">

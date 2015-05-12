@@ -17,7 +17,16 @@ angular.module('app.courts', [])
     var courtName = $scope.court.currentCourtData.name;
     var address = $scope.court.currentCourtData.address;
     var placeId = $scope.court.currentCourtData.placeId;
+    
+    starttime.setHours(starttime.getHours() - 1);
+    endtime.setHours(endtime.getHours() - 1);
+
+    starttime = date.toDateString().concat(" ", starttime.toTimeString());
+    endtime = date.toDateString().concat(" ", endtime.toTimeString());
+
+
     var user = JSON.parse($window.localStorage.getItem('com.app'));
+
     var rsvp = {
       'date': date,
       'starttime': starttime,
