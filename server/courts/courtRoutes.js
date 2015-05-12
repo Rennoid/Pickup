@@ -10,5 +10,4 @@ module.exports = function (app) {
 
   //handles get requests to return rsvps fora  specific court
   app.get('/:courtId/rsvp', courtController.getCourtRSVP);
-  //app.get('/', courtController.allRsvp);
 };

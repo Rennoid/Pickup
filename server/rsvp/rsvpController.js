@@ -1,5 +1,12 @@
 var db = require('../db');
 
+/**
+ * Uses court data to either find an existing
+ * court or create a new court and then return
+ * the court id, which will be leveraged with 
+ * the form data passed from the court partial
+ * to create a new rsvp for the user
+ */
 var addRsvp = function (req, res, next){
   var starttime = req.body.starttime,
     endtime = req.body.endtime,
@@ -8,6 +15,8 @@ var addRsvp = function (req, res, next){
     address = req.body.address,
     userId = req.body.userId;
 
+  // finds the court in the database with the google place id
+  // or creates it
   db.Court.findOrCreate( { 
     where: { placeId: placeId }, 
     defaults: {
@@ -15,6 +24,7 @@ var addRsvp = function (req, res, next){
       address: address
     }
   })
+    // spread is very similar to function.apply
     .spread(function (instance, created) {
       db.RSVP.create({
         starttime: starttime,
